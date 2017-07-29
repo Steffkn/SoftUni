@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{69483FC6-B9E5-4721-864A-1ED01F300D10}</ProjectGuid>
+    <ProjectGuid>{7E7421AD-0F4C-4F04-97C2-2AD37CB9B7E0}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_02.Expression</RootNamespace>
-    <AssemblyName>_02.Expression</AssemblyName>
+    <RootNamespace>_05.RectangleArea</RootNamespace>
+    <AssemblyName>05.RectangleArea</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="RectangleArea.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

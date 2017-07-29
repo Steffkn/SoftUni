@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1316E0B4-58BB-4A5A-9A23-6DBBF6CA6F20}</ProjectGuid>
+    <ProjectGuid>{AA578D61-AEC2-4C88-A1F8-2B96A78D0203}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_06.SquareOfStars</RootNamespace>
-    <AssemblyName>_06.SquareOfStars</AssemblyName>
+    <RootNamespace>_01.HelloSoftUni</RootNamespace>
+    <AssemblyName>01.HelloSoftUni</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="HelloSoftUni.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

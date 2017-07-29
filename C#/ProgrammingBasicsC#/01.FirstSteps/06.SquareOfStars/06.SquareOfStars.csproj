@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7E7421AD-0F4C-4F04-97C2-2AD37CB9B7E0}</ProjectGuid>
+    <ProjectGuid>{1316E0B4-58BB-4A5A-9A23-6DBBF6CA6F20}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_05.RectangleArea</RootNamespace>
-    <AssemblyName>_05.RectangleArea</AssemblyName>
+    <RootNamespace>_06.SquareOfStars</RootNamespace>
+    <AssemblyName>06.SquareOfStars</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="SquareOfStars.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BDD6ED32-D01F-480C-94C0-484AD029B893}</ProjectGuid>
+    <ProjectGuid>{69483FC6-B9E5-4721-864A-1ED01F300D10}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_03.Nums1to20</RootNamespace>
-    <AssemblyName>_03.Nums1to20</AssemblyName>
+    <RootNamespace>_02.Expression</RootNamespace>
+    <AssemblyName>02.Expression</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Expression.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
