@@ -17,6 +17,7 @@
             {
                 case "May":
                 case "October":
+
                     studioCost = days * 50m;
                     apartmentCost = days * 65m;
                     if (days > 14)
@@ -35,9 +36,8 @@
 
                     if (days > 14)
                     {
-                        studioCost = studioCost - studioCost * 30 / 100;
+                        studioCost = studioCost - (studioCost * 20) / 100;
                     }
-
                     break;
                 case "July":
                 case "August":
@@ -50,7 +50,7 @@
 
             if (days > 14)
             {
-                apartmentCost = apartmentCost - apartmentCost * 10 / 100;
+                apartmentCost = apartmentCost * 0.9m;
             }
 
             Console.WriteLine(string.Format("Apartment: {0:F2} lv.", apartmentCost));
