@@ -1,0 +1,6 @@
+D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\10.Diamond\bin\Debug\10.Diamond.exe.config
+D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\10.Diamond\bin\Debug\10.Diamond.exe
+D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\10.Diamond\bin\Debug\10.Diamond.pdb
+D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\10.Diamond\obj\Debug\10.Diamond.exe
+D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\10.Diamond\obj\Debug\10.Diamond.pdb
+D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\10.Diamond\obj\Debug\10.Diamond.csprojResolveAssemblyReference.cache

@@ -1,0 +1,5 @@
+D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\08.Sunglasses\bin\Debug\08.Sunglasses.exe.config
+D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\08.Sunglasses\bin\Debug\08.Sunglasses.exe
+D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\08.Sunglasses\bin\Debug\08.Sunglasses.pdb
+D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\08.Sunglasses\obj\Debug\08.Sunglasses.exe
+D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\08.Sunglasses\obj\Debug\08.Sunglasses.pdb

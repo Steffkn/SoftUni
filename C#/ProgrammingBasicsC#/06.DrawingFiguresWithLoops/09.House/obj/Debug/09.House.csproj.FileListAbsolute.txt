@@ -1,0 +1,5 @@
+D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\09.House\bin\Debug\09.House.exe.config
+D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\09.House\bin\Debug\09.House.exe
+D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\09.House\bin\Debug\09.House.pdb
+D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\09.House\obj\Debug\09.House.exe
+D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\09.House\obj\Debug\09.House.pdb
