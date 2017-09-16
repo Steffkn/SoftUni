@@ -1,0 +1,6 @@
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\03.PhotoPictures\bin\Debug\03.PhotoPictures.exe.config
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\03.PhotoPictures\bin\Debug\03.PhotoPictures.exe
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\03.PhotoPictures\bin\Debug\03.PhotoPictures.pdb
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\03.PhotoPictures\obj\Debug\03.PhotoPictures.csproj.CoreCompileInputs.cache
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\03.PhotoPictures\obj\Debug\03.PhotoPictures.exe
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\03.PhotoPictures\obj\Debug\03.PhotoPictures.pdb

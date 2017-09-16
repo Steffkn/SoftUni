@@ -1,0 +1,7 @@
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\01.TailoringWorkshop\bin\Debug\01.TailoringWorkshop.exe.config
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\01.TailoringWorkshop\bin\Debug\01.TailoringWorkshop.exe
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\01.TailoringWorkshop\bin\Debug\01.TailoringWorkshop.pdb
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\01.TailoringWorkshop\obj\Debug\01.TailoringWorkshop.csprojResolveAssemblyReference.cache
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\01.TailoringWorkshop\obj\Debug\01.TailoringWorkshop.csproj.CoreCompileInputs.cache
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\01.TailoringWorkshop\obj\Debug\01.TailoringWorkshop.exe
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\01.TailoringWorkshop\obj\Debug\01.TailoringWorkshop.pdb

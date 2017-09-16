@@ -1,0 +1,7 @@
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\05.Snowflake\bin\Debug\05.Snowflake.exe.config
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\05.Snowflake\bin\Debug\05.Snowflake.exe
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\05.Snowflake\bin\Debug\05.Snowflake.pdb
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\05.Snowflake\obj\Debug\05.Snowflake.csprojResolveAssemblyReference.cache
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\05.Snowflake\obj\Debug\05.Snowflake.csproj.CoreCompileInputs.cache
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\05.Snowflake\obj\Debug\05.Snowflake.exe
+E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\05.Snowflake\obj\Debug\05.Snowflake.pdb
