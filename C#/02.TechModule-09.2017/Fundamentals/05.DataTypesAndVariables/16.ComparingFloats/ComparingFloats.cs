@@ -10,7 +10,7 @@
             double numberB = double.Parse(Console.ReadLine());
             double eps = 0.000001;
 
-            if (numberB - numberA < eps)
+            if (Math.Abs(numberB - numberA) <= eps)
             {
                 Console.WriteLine("True");
             }

@@ -16,7 +16,7 @@ namespace _09.ReverseCharacters
 
             for (int i = letters.Length - 1; i >= 0; i--)
             {
-                Console.WriteLine(letters[i]);
+                Console.Write(letters[i]);
             }
         }
     }

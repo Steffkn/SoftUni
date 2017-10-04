@@ -7,7 +7,7 @@
         static void Main()
         {
             int maxNumber = int.Parse(Console.ReadLine());
-            for (int number = 0; number <= maxNumber; number++)
+            for (int number = 2; number <= maxNumber; number++)
             {
                 bool isPrime = true;
                 for (int devider = 2; devider <= Math.Sqrt(number); devider++)

@@ -66,8 +66,7 @@
             }
             catch (OverflowException)
             {
-                Console.WriteLine(inputNumber);
-                Console.WriteLine("can't fit in any type");
+                Console.WriteLine("{0} can't fit in any type", inputNumber);
             }
 
         }

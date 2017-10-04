@@ -7,12 +7,13 @@ namespace _19.TheaThePhotographer
     {
         static void Main()
         {
-            int numberOfPics = int.Parse(Console.ReadLine());
-            int filterTimePerPicture = int.Parse(Console.ReadLine());
-            int goodPicturesPercent = int.Parse(Console.ReadLine());
-            int uploadTimePerPicture = int.Parse(Console.ReadLine());
+            long numberOfPics = long.Parse(Console.ReadLine());
+            long filterTimePerPicture = long.Parse(Console.ReadLine());
+            long goodPicturesPercent = long.Parse(Console.ReadLine());
+            long uploadTimePerPicture = long.Parse(Console.ReadLine());
 
-            int pictures = Convert.ToInt32(Math.Ceiling(numberOfPics * goodPicturesPercent/100.0));
+             
+            long pictures = Convert.ToInt64(Math.Ceiling(numberOfPics * goodPicturesPercent/100.0));
 
             long totalSeconds = filterTimePerPicture * numberOfPics;
             totalSeconds += uploadTimePerPicture * pictures;
