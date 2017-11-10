@@ -1,28 +1,28 @@
 ﻿namespace _01.SinoTheWalker
 {
     using System;
+    using System.Globalization;
     using System.Numerics;
 
     public class SinoTheWalker
     {
         static void Main()
         {
-            string[] timeInput = Console.ReadLine().Split(':');
-            int hours = int.Parse(timeInput[0]) * 3600;
-            int minutes = int.Parse(timeInput[1]) * 60;
-            int seconds = int.Parse(timeInput[2]);
-            int totalInputInSeconds = hours + minutes + seconds;
+            string str = Console.ReadLine();
+            var startTime = TimeSpan.ParseExact(str, "hh\\:mm\\:ss", CultureInfo.InvariantCulture);
+            int numberOfSteps =  int.Parse(Console.ReadLine());
+            int timeForStep =  int.Parse(Console.ReadLine());
 
-            BigInteger steps = int.Parse(Console.ReadLine());
-            BigInteger secPerStep = int.Parse(Console.ReadLine());
+            long inputSeconds = startTime.Hours * 3600 + startTime.Minutes * 60 + startTime.Seconds;
+            long totalSeconds = (long)numberOfSteps * timeForStep + inputSeconds;
 
-            BigInteger totalTimeInSeconds = (steps * secPerStep) + totalInputInSeconds;
+            int seconds = (int)(totalSeconds % (60));
+            totalSeconds /= 60;
+            int minutes = (int)(totalSeconds % (60));
+            totalSeconds /= 60;
+            int hours = (int)(totalSeconds % (24));
 
-            BigInteger arriveHour = (totalTimeInSeconds / 3600) % 24;
-            BigInteger arriveMinute = (totalTimeInSeconds / 60) % 60;
-            BigInteger arriveSecond = totalTimeInSeconds % 60;
-
-            Console.WriteLine($"Time Arrival: {arriveHour:00}:{arriveMinute:00}:{arriveSecond:00}");
+            Console.WriteLine($"Time Arrival: {hours:D2}:{minutes:D2}:{seconds:D2}");
         }
     }
 }

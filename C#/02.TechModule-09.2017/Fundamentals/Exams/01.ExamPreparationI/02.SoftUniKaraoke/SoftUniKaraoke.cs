@@ -8,77 +8,75 @@
     {
         static void Main()
         {
-            string[] input = Console.ReadLine().Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            List<string> singers = new List<string>();
-            List<string> songs = new List<string>();
-            Dictionary<string, int> result = new Dictionary<string, int>();
-            List<string> awards = new List<string>();
+            var recordedSingers = Console.ReadLine()
+                .Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                .ToList();
+            var availableSongs = Console.ReadLine()
+                .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(x => x.Trim())
+                .ToList();
 
-            foreach (var item in input)
-            {
-                singers.Add(item.Trim());
-            }
-
-            input = Console.ReadLine().Split(new char[] { ',', }, StringSplitOptions.RemoveEmptyEntries);
-
-            foreach (var item in input)
-            {
-                songs.Add(item.Trim());
-            }
-
-            singers.Sort();
-
-            foreach (var item in singers)
-            {
-                Console.WriteLine(item);
-            }
+            var singers = new Dictionary<string, Singer>();
 
             while (true)
             {
-                string lineInput = Console.ReadLine();
+                var input = Console.ReadLine();
 
-                if (lineInput == "dawn")
+                if (input.Equals("dawn"))
                 {
-                    //result.OrderBy(r => r.Key);
-
-                    int i = 0;
-                    foreach (var singer in result)
-                    {
-                        Console.WriteLine($"{singer.Key}: {singer.Value} awards");
-                        string[] singersAwards = awards[i].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                        foreach (var award in singersAwards)
-                        {
-                            Console.WriteLine($"--{award}");
-                        }
-                    }
-
                     break;
                 }
 
-                string[] data = lineInput.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                var inputs = input
+                    .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(x => x.Trim())
+                    .ToArray();
 
-                for (int i = 0; i < singers.Count; i++)
+                string singer = inputs[0];
+                string song = inputs[1];
+                string award = inputs[2];
+
+                if (recordedSingers.Contains(singer) && availableSongs.Contains(song))
                 {
-                    if (data[0].Trim() == singers[i])
+                    if (!singers.ContainsKey(singer))
                     {
-                        foreach (var song in songs)
-                        {
-                            if (data[1].Trim() == song)
-                            {
-                                if (result.ContainsKey(singers[i]))
-                                {
-                                    result[singers[i]]++;
-                                    awards[i] += data[2].Trim() + ",";
-                                }
-                                else
-                                {
-                                    result.Add(singers[i], 1);
-                                    awards.Add(data[2].Trim());
-                                }
-                            }
-                        }
+                        singers.Add(singer, new Singer(singer));
+                    }
+
+                    if (!singers[singer].Awards.Contains(award))
+                    {
+                        singers[singer].Awards.Add(award);
                     }
                 }
+            }
+
+            if (singers.Count == 0)
+            {
+                Console.WriteLine("No awards");
+            }
+            else
+            {
+                foreach (var singer in singers.OrderByDescending(x => x.Value.Awards.Count)
+                    .ThenBy(x => x.Key))
+                {
+                    Console.WriteLine($"{singer.Key}: {singer.Value.Awards.Count} awards");
+
+                    foreach (var award in singer.Value.Awards.OrderBy(x => x))
+                    {
+                        Console.WriteLine($"--{award}");
+                    }
+                }
+            }
+        }
+
+        class Singer
+        {
+            public string name;
+            public List<string> Awards = new List<string>();
+
+            public Singer(string name)
+            {
+                this.name = name;
             }
         }
     }
