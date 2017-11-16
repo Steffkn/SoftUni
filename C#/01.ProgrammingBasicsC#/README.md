@@ -1,22 +1,19 @@
-# SoftUni
+# Programming Basics with C# August 2017
 
-**SoftUni** is the best software university in Bulgaria. It offers great opportunities for developing yourself as a software developer and starting your career.
+The course **"Programming Basics"** provides the initial programming skills required for all technological specialties at the SoftUni. This includes **basic coding skills**, working with **Integrated Development Environment** (IDE), using variables and data, **operators** and **expressions**, console handling (reading input and printing output), using the conditional constructions (**if**, **if-else**) and cycles (**for**, **while**, **do-while**). The course ends with a **practical programming exam**.
 
-The courses that are contained in this repository are:
+1. <a href="https://github.com/Steffkn/SoftUni/tree/master/C%23/01.ProgrammingBasicsC%23">FirstSteps</а>
+2. <a href="https://github.com/Steffkn/SoftUni/tree/master/C%23/01.ProgrammingBasicsC%23">SimpleCalculations</а>
+3. <a href="https://github.com/Steffkn/SoftUni/tree/master/C%23/01.ProgrammingBasicsC%23">SimpleConditionalStatements</а>
+4. <a href="https://github.com/Steffkn/SoftUni/tree/master/C%23/01.ProgrammingBasicsC%23">ComplexConditionalStatements</а>
+5. <a href="https://github.com/Steffkn/SoftUni/tree/master/C%23/01.ProgrammingBasicsC%23">SimpleLoops</а>
+6. <a href="https://github.com/Steffkn/SoftUni/tree/master/C%23/01.ProgrammingBasicsC%23">DrawingFiguresWithLoops</а>
+7. <a href="https://github.com/Steffkn/SoftUni/tree/master/C%23/01.ProgrammingBasicsC%23">AdvancedLoops</а>
+8. <a href="https://github.com/Steffkn/SoftUni/tree/master/C%23/01.ProgrammingBasicsC%23">Exams</а>
 
-<ol>
- <li><a href="https://github.com/Steffkn/SoftUni/tree/master/C%23/01.ProgrammingBasicsC%23" > Programming Basic with C# 2017</a>
- </li>
- <li><a href="https://github.com/Steffkn/SoftUni/tree/master/C%23/02.TechModule-09.2017">TechModule September 2017</a>
-  <ul>
-   <li><a href="https://github.com/Steffkn/SoftUni/tree/master/C%23/02.TechModule-09.2017/Fundamentals">Programming Fundamentals October 2017 (mainly C#)</a> 
-   </li>
-   <li><a href="https://github.com/Steffkn/SoftUni/tree/master/C%23/02.TechModule-09.2017/SoftwareTech">Software Technologies November 2017 (HTML, CSS, JS, PHP, Java and C#)</a>
-   </li>
-  </ul>
- </li>
-</ol>
+![Start](https://img.shields.io/badge/Start-22.07.2017-blue.svg?style=flat-square)
+![End](https://img.shields.io/badge/End-17.09.2017-blue.svg?style=flat-square)
 
-![Start](https://img.shields.io/badge/Start-29.07.2017-blue.svg?style=flat-square) 
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/Steffkn/SoftUni/blob/master/LICENSE)
+## Result
+![Result](https://softuni.bg/certificates/converttoimage/23521/a2c2b4f1)
 
