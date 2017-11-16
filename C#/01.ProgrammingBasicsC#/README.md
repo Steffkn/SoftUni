@@ -16,6 +16,4 @@ The course **"Programming Basics"** provides the initial programming skills requ
 
 ## Result
 
-<a href="https://softuni.bg/certificates/converttoimage/23521/a2c2b4f1">
 ![Certificate Programming Basics with C# - August 2017](https://softuni.bg/certificates/converttoimage/23521/a2c2b4f1)
-</а>
