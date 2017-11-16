@@ -1,5 +1,0 @@
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\06.RhombusOfStars\bin\Debug\06.RhombusOfStars.exe.config
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\06.RhombusOfStars\bin\Debug\06.RhombusOfStars.exe
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\06.RhombusOfStars\bin\Debug\06.RhombusOfStars.pdb
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\06.RhombusOfStars\obj\Debug\06.RhombusOfStars.exe
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\06.RhombusOfStars\obj\Debug\06.RhombusOfStars.pdb

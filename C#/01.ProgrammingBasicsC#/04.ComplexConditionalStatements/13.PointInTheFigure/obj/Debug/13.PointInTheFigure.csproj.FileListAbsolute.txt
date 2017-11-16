@@ -1,6 +1,0 @@
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\04.ComplexConditionalStatements\13.PointInTheFigure\bin\Debug\13.PointInTheFigure.exe.config
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\04.ComplexConditionalStatements\13.PointInTheFigure\bin\Debug\13.PointInTheFigure.exe
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\04.ComplexConditionalStatements\13.PointInTheFigure\bin\Debug\13.PointInTheFigure.pdb
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\04.ComplexConditionalStatements\13.PointInTheFigure\obj\Debug\13.PointInTheFigure.csprojResolveAssemblyReference.cache
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\04.ComplexConditionalStatements\13.PointInTheFigure\obj\Debug\13.PointInTheFigure.exe
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\04.ComplexConditionalStatements\13.PointInTheFigure\obj\Debug\13.PointInTheFigure.pdb

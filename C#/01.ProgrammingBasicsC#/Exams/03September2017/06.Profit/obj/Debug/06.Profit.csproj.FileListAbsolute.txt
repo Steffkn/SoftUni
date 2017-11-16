@@ -1,7 +1,0 @@
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\06.Profit\bin\Debug\06.Profit.exe.config
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\06.Profit\bin\Debug\06.Profit.exe
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\06.Profit\bin\Debug\06.Profit.pdb
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\06.Profit\obj\Debug\06.Profit.csprojResolveAssemblyReference.cache
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\06.Profit\obj\Debug\06.Profit.csproj.CoreCompileInputs.cache
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\06.Profit\obj\Debug\06.Profit.exe
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\Exams\03September2017\06.Profit\obj\Debug\06.Profit.pdb

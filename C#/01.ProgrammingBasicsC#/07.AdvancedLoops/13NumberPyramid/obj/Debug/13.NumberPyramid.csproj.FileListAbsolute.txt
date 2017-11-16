@@ -1,6 +1,0 @@
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\07.AdvancedLoops\13NumberPyramid\bin\Debug\13NumberPyramid.exe.config
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\07.AdvancedLoops\13NumberPyramid\bin\Debug\13NumberPyramid.exe
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\07.AdvancedLoops\13NumberPyramid\bin\Debug\13NumberPyramid.pdb
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\07.AdvancedLoops\13NumberPyramid\obj\Debug\13.NumberPyramid.csproj.CoreCompileInputs.cache
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\07.AdvancedLoops\13NumberPyramid\obj\Debug\13NumberPyramid.exe
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\07.AdvancedLoops\13NumberPyramid\obj\Debug\13NumberPyramid.pdb

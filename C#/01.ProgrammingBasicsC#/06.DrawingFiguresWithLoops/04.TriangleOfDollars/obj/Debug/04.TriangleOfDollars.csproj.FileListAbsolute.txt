@@ -1,6 +1,0 @@
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\04.TriangleOfDollars\bin\Debug\04.TriangleOfDollars.exe.config
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\04.TriangleOfDollars\bin\Debug\04.TriangleOfDollars.exe
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\04.TriangleOfDollars\bin\Debug\04.TriangleOfDollars.pdb
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\04.TriangleOfDollars\obj\Debug\04.TriangleOfDollars.csprojResolveAssemblyReference.cache
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\04.TriangleOfDollars\obj\Debug\04.TriangleOfDollars.exe
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\04.TriangleOfDollars\obj\Debug\04.TriangleOfDollars.pdb

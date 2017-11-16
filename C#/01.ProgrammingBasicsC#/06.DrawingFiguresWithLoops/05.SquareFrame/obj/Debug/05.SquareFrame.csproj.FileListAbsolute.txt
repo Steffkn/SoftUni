@@ -1,5 +1,0 @@
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\05.SquareFrame\bin\Debug\05.SquareFrame.exe.config
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\05.SquareFrame\bin\Debug\05.SquareFrame.exe
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\05.SquareFrame\bin\Debug\05.SquareFrame.pdb
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\05.SquareFrame\obj\Debug\05.SquareFrame.exe
-D:\_Cloud\GitHub\SoftUni\C#\ProgrammingBasicsC#\06.DrawingFiguresWithLoops\05.SquareFrame\obj\Debug\05.SquareFrame.pdb

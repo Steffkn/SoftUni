@@ -1,7 +1,0 @@
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\07.AdvancedLoops\14.NumberTable\bin\Debug\14.NumberTable.exe.config
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\07.AdvancedLoops\14.NumberTable\bin\Debug\14.NumberTable.exe
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\07.AdvancedLoops\14.NumberTable\bin\Debug\14.NumberTable.pdb
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\07.AdvancedLoops\14.NumberTable\obj\Debug\14.NumberTable.csprojResolveAssemblyReference.cache
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\07.AdvancedLoops\14.NumberTable\obj\Debug\14.NumberTable.csproj.CoreCompileInputs.cache
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\07.AdvancedLoops\14.NumberTable\obj\Debug\14.NumberTable.exe
-E:\_Cloud\Github\SoftUni\C#\ProgrammingBasicsC#\07.AdvancedLoops\14.NumberTable\obj\Debug\14.NumberTable.pdb
