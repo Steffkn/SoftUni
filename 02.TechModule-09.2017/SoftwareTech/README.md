@@ -12,6 +12,8 @@ The **“Software Technologies”** course provides overview and first steps in 
 1. [HTML and CSS](https://github.com/Steffkn/SoftUni/tree/master/C%23/02.TechModule-09.2017/SoftwareTech/01.HTML%20and%20CSS "HTML and CSS")
 2. [HTML and CSS - BlogDesign](https://github.com/Steffkn/SoftUni/tree/master/C%23/02.TechModule-09.2017/SoftwareTech/02.HTML%20and%20CSS%20-%20BlogDesign "HTML and CSS - BlogDesign")
 3. [JavaScript Basics](https://github.com/Steffkn/SoftUni/tree/master/C%23/02.TechModule-09.2017/SoftwareTech/03.JavaScriptBasics "JavaScript Basics")
+4. [JavaScript ExpressJS](https://github.com/Steffkn/SoftUni/tree/master/C%23/02.TechModule-09.2017/SoftwareTech/04.JavaScriptExpressJS "JavaScript ExpressJS")
+5. [JavaScript - BlogDesign](https://github.com/Steffkn/SoftUni/tree/master/C%23/02.TechModule-09.2017/SoftwareTech/05.JavaScriptBlogDesign "JavaScript BlogDesign")
 
 
 
