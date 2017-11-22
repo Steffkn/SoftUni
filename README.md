@@ -5,13 +5,13 @@
 The courses that are contained in this repository are:
 
 <ol>
- <li><a href="https://github.com/Steffkn/SoftUni/tree/master/C%23/01.ProgrammingBasicsC%23" >Programming Basic with C# August 2017</a>
+ <li><a href="https://github.com/Steffkn/SoftUni/tree/master/01.ProgrammingBasicsC%23" >Programming Basic with C# August 2017</a>
  </li>
- <li><a href="https://github.com/Steffkn/SoftUni/tree/master/C%23/02.TechModule-09.2017">TechModule September 2017</a>
+ <li><a href="https://github.com/Steffkn/SoftUni/tree/master/02.TechModule-09.2017">TechModule September 2017</a>
   <ul>
-   <li><a href="https://github.com/Steffkn/SoftUni/tree/master/C%23/02.TechModule-09.2017/Fundamentals">Programming Fundamentals October 2017 (mainly C#)</a> 
+   <li><a href="https://github.com/Steffkn/SoftUni/tree/master//02.TechModule-09.2017/Fundamentals">Programming Fundamentals October 2017 (mainly C#)</a> 
    </li>
-   <li><a href="https://github.com/Steffkn/SoftUni/tree/master/C%23/02.TechModule-09.2017/SoftwareTech">Software Technologies November 2017 (HTML, CSS, JS, PHP, Java and C#)</a>
+   <li><a href="https://github.com/Steffkn/SoftUni/tree/master/02.TechModule-09.2017/SoftwareTech">Software Technologies November 2017 (HTML, CSS, JS, PHP, Java and C#)</a>
    </li>
   </ul>
  </li>
