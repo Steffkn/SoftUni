@@ -3,6 +3,9 @@
 
 *.zip
 *.rar
+db/
+.idea/
+*.bat
 
 # User-specific files
 *.suo
@@ -231,9 +234,6 @@ FakesAssemblies/
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
 node_modules/
-db/
-.idea/
-*.bat
 
 # Visual Studio 6 build log
 *.plg
