@@ -3,18 +3,12 @@ package com.company;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static java.util.Collections.reverseOrder;
 
 public class _24BookLibrary {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-
         Library lib = new Library("Library");
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-
         int n = scan.nextInt();
         scan.nextLine();
 
@@ -40,14 +34,16 @@ public class _24BookLibrary {
                 authors.put(book.getAuthor(), authors.get(book.getAuthor()) + book.getPrice());
             }
         }
-        Map result = authors.entrySet().stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
-                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
 
-        for (Object author : result.keySet()) {
-            System.out.printf("%s -> %.2f%n",author, authors.get(author));
-        }
+        Comparator<Map.Entry<String, Double>> compareByPrice = Comparator.comparing(Map.Entry::getValue, Comparator.reverseOrder());
+        Comparator<Map.Entry<String, Double>> compareByName = Comparator.comparing(Map.Entry::getKey);
+
+        authors.entrySet()
+                .stream()
+                .sorted(compareByPrice.thenComparing(compareByName))
+                .forEach((Map.Entry<String, Double> kvp) ->
+                        System.out.printf("%s -> %.2f%n", kvp.getKey(), kvp.getValue())
+                );
     }
 }
 
@@ -86,6 +82,10 @@ class Book {
         this.price = price;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     public String getAuthor() {
         return author;
     }
@@ -93,4 +93,9 @@ class Book {
     public double getPrice() {
         return price;
     }
+
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
 }
