@@ -13,9 +13,15 @@ The **“Software Technologies”** course provides overview and first steps in 
 2. [HTML and CSS - BlogDesign](https://github.com/Steffkn/SoftUni/tree/master/02.TechModule-09.2017/SoftwareTech/02.HTML%20and%20CSS%20-%20BlogDesign "HTML and CSS - BlogDesign")
 3. [JavaScript Basics](https://github.com/Steffkn/SoftUni/tree/master/02.TechModule-09.2017/SoftwareTech/03.JavaScriptBasics "JavaScript Basics")
 4. [JavaScript ExpressJS](https://github.com/Steffkn/SoftUni/tree/master/02.TechModule-09.2017/SoftwareTech/04.JavaScriptExpressJS "JavaScript ExpressJS")
-5. [JavaScript - BlogDesign](https://github.com/Steffkn/SoftUni/tree/master/02.TechModule-09.2017/SoftwareTech/05.JavaScriptBlogDesign "JavaScript BlogDesign")
-
-
+5. [JavaScript BlogDesign](https://github.com/Steffkn/SoftUni/tree/master/02.TechModule-09.2017/SoftwareTech/05.JavaScriptBlogDesign "JavaScript BlogDesign")
+6. [PHP Basics](https://github.com/Steffkn/SoftUni/tree/master/02.TechModule-09.2017/SoftwareTech/06.PHPBasics "PHP Basics")
+7. [PHP Symfony](https://github.com/Steffkn/SoftUni/tree/master/02.TechModule-09.2017/SoftwareTech/07.PHP_MVC_Symfony "PHP Symfony")
+8. [PHP BlogDesign](https://github.com/Steffkn/SoftUni/tree/master/02.TechModule-09.2017/SoftwareTech/08.PHP_BlogDesign/Blog "PHP BlogDesign")
+9. [Java Basics](https://github.com/Steffkn/SoftUni/tree/master/02.TechModule-09.2017/SoftwareTech/09.JavaBasics "Java Basics")
+10. [Java Spring](https://github.com/Steffkn/SoftUni/tree/master/02.TechModule-09.2017/SoftwareTech/10.JavaSpring "Java Spring")
+11. [Java BlogDesign](https://github.com/Steffkn/SoftUni/tree/master/02.TechModule-09.2017/SoftwareTech/11.JavaBlogDesign "Java BlogDesign")
+12. [CSharp MVC](https://github.com/Steffkn/SoftUni/tree/master/02.TechModule-09.2017/SoftwareTech/12.CSharpMVC "CSharp MVC")
+13. [CSharp BlogDesign](https://github.com/Steffkn/SoftUni/tree/master/02.TechModule-09.2017/SoftwareTech/13.CSharpBlogDesign "CSharp BlogDesign")
 
 ![Start](https://img.shields.io/badge/Start-06.11.2017-blue.svg?style=flat-square)
 ![End](https://img.shields.io/badge/End-04.01.2018-blue.svg?style=flat-square)
