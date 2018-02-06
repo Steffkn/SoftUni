@@ -5,7 +5,7 @@
 
     public class DiagonalDifference
     {
-        static void Main()
+        public static void Main()
         {
             long n = long.Parse(Console.ReadLine());
             long[,] matrix = new long[n, n];

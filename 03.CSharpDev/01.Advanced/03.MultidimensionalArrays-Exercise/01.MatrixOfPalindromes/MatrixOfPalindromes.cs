@@ -27,6 +27,7 @@
                 {
                     Console.Write("{0} ", palindromes[i, j]);
                 }
+
                 Console.Write(palindromes[i, palindromes.GetLength(1) - 1]);
                 Console.WriteLine();
             }

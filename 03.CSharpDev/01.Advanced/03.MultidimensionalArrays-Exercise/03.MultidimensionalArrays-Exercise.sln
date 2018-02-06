@@ -21,11 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08.RadioactiveBunnies", "08
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09.Crossfire", "09.Crossfire\09.Crossfire.csproj", "{EC42C6BF-6ACE-4384-99F0-EB2B6A01844E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10.TheHeiganDance", "10.TheHeiganDance\10.TheHeiganDance.csproj", "{3148B295-9C95-4BDB-BFA6-3E5599CD3B27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10.TheHeiganDance", "10.TheHeiganDance\10.TheHeiganDance.csproj", "{3148B295-9C95-4BDB-BFA6-3E5599CD3B27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11.ParkingSystem", "11.ParkingSystem\11.ParkingSystem.csproj", "{D118F9E2-DF1F-45D3-B1B1-8CDB5E9BE0F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11.ParkingSystem", "11.ParkingSystem\11.ParkingSystem.csproj", "{D118F9E2-DF1F-45D3-B1B1-8CDB5E9BE0F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12.StringMatrixRotation", "12.StringMatrixRotation\12.StringMatrixRotation.csproj", "{BB2D63E9-7BBD-454B-84AB-71A025A3011A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "12.StringMatrixRotation", "12.StringMatrixRotation\12.StringMatrixRotation.csproj", "{BB2D63E9-7BBD-454B-84AB-71A025A3011A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
