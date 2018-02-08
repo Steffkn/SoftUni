@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.8
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.DangerousFloor", "01.DangerousFloor\01.DangerousFloor.csproj", "{17F7D231-EACE-4031-B1A6-085EC5A963CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.CryptoMaster", "02.CryptoMaster\02.CryptoMaster.csproj", "{90F54726-A1AE-4355-98BA-9C112B696AFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.CryptoMaster", "02.CryptoMaster\02.CryptoMaster.csproj", "{90F54726-A1AE-4355-98BA-9C112B696AFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.GreedyTimes", "03.GreedyTimes\03.GreedyTimes.csproj", "{B7FF7F19-A4E8-41AA-B038-FAF0146E8757}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.GreedyTimes", "03.GreedyTimes\03.GreedyTimes.csproj", "{B7FF7F19-A4E8-41AA-B038-FAF0146E8757}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.TreasureMap", "04.TreasureMap\04.TreasureMap.csproj", "{45884FE3-21E5-475B-9CAF-19B33F842D5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.TreasureMap", "04.TreasureMap\04.TreasureMap.csproj", "{45884FE3-21E5-475B-9CAF-19B33F842D5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{8C717F6A-0AA1-434F-843A-BCA98BADAA79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{45884FE3-21E5-475B-9CAF-19B33F842D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45884FE3-21E5-475B-9CAF-19B33F842D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45884FE3-21E5-475B-9CAF-19B33F842D5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C717F6A-0AA1-434F-843A-BCA98BADAA79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C717F6A-0AA1-434F-843A-BCA98BADAA79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C717F6A-0AA1-434F-843A-BCA98BADAA79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C717F6A-0AA1-434F-843A-BCA98BADAA79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

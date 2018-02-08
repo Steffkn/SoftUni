@@ -1,56 +1,46 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 
-public class TreasureMap
+namespace _04.TreasureMap
 {
-    static void Main()
+    public class TreasureMap
     {
-        int n = int.Parse(Console.ReadLine());
-        string pattern = @"[#][^!#]*?([a-zA-Z]{4})[^!#]+([0-9]{3}-[0-9]{4,6}).*?[!]|[!][^!#]*?([a-zA-Z]{4})[^!#]+([0-9]{3}-[0-9]{4,6}).*?[#]";
-
-        for (int i = 0; i < n; i++)
+        public static void Main()
         {
-            var reg = new Regex(pattern);
-            var matches = reg.Matches(Console.ReadLine());
+            string pattern = @"![^!#]*?\b([A-Za-z]{4})\b[^!#]*[^\d](\d{3})-(\d{6}|\d{4})(?:[^\d!#][^!#]*)?#|#[^!#]*?\b([A-Za-z]{4})\b[^!#]*[^\d](\d{3})-(\d{6}|\d{4})(?:[^\d!#][^!#]*)?!";
+            var regex = new Regex(pattern);
+            var output = new StringBuilder();
 
-            string streetName = string.Empty;
-            string strNumber = string.Empty;
-            string password = string.Empty;
-            string[] numbeers;
-            int index = 0;
-            if (matches.Count < 5)
+            int n = int.Parse(Console.ReadLine().Trim());
+            for (int line = 0; line < n; line++)
             {
-                index = matches.Count / 2;
-            }
-            else
-            {
-                index = (matches.Count / 2) + 1;
-            }
-            //int index = matches.Count / 2;
+                string inputLine = Console.ReadLine();
 
-            /* foreach (Match item in matches)
-             {
-                 Console.WriteLine("0 - {0}",item.Groups[0]);
-                 Console.WriteLine("1 - {0}",item.Groups[1]);
-                 Console.WriteLine("2 - {0}",item.Groups[2]);
-                 Console.WriteLine("3 - {0}",item.Groups[3]);
-             }*/
+                if (regex.IsMatch(inputLine))
+                {
+                    var matches = regex.Matches(inputLine);
+                    var mostInnerValidIndex = matches.Count / 2;
+                    var validMessage = matches[mostInnerValidIndex];
 
-            if (matches[index].Groups[0].ToString().StartsWith("!"))
-            {
-                streetName = matches[index].Groups[3].ToString();
-                numbeers = matches[index].Groups[4].ToString().Split(new char[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
-            }
-            else
-            {
-                streetName = matches[index].Groups[1].ToString();
-                numbeers = matches[index].Groups[2].ToString().Split(new char[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (validMessage.ToString().StartsWith("!"))
+                    {
+                        string streetName = validMessage.Groups[1].Value;
+                        string streetNumber = validMessage.Groups[2].Value;
+                        string pass = validMessage.Groups[3].Value;
+                        output.AppendLine($"Go to str. {streetName} {streetNumber}. Secret pass: {pass}.");
+                    }
+                    else
+                    {
+                        string streetName = validMessage.Groups[4].Value;
+                        string streetNumber = validMessage.Groups[5].Value;
+                        string pass = validMessage.Groups[6].Value;
+                        output.AppendLine($"Go to str. {streetName} {streetNumber}. Secret pass: {pass}.");
+                    }
+                }
             }
 
-            strNumber = numbeers[0];
-            password = numbeers[1];
-
-            Console.WriteLine("Go to str. {0} {1}. Secret pass: {2}.", streetName, strNumber, password);
+            Console.WriteLine(output.ToString().Trim());
         }
     }
 }

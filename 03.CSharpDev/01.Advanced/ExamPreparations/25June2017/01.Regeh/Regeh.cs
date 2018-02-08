@@ -16,21 +16,11 @@ public class Regeh
         foreach (Match match in matches)
         {
             index += int.Parse(match.Groups[1].ToString());
-
-            if (index > input.Length - 1)
-            {
-                index = index % (input.Length - 1);
-            }
-
+			index = index % (input.Length);
             sb.Append(input[index]);
 
             index += int.Parse(match.Groups[2].ToString());
-
-            if (index > input.Length - 1)
-            {
-                index = index % (input.Length - 1);
-            }
-
+			index = index % input.Length;
             sb.Append(input[index]);
         }
 

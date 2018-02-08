@@ -20,59 +20,62 @@ public class GreedyTimes
             var goodieName = goodies[i];
             long goodieValue = long.Parse(goodies[i + 1]);
 
-            if (goodieName.Equals("Gold", StringComparison.CurrentCultureIgnoreCase) && (currentBagCapacity + goodieValue) <= bagCapacity)
+            if ((currentBagCapacity + goodieValue) <= bagCapacity)
             {
-                if (!bagContent.ContainsKey("Gold"))
+                if (goodieName.Equals("Gold", StringComparison.CurrentCultureIgnoreCase))
                 {
-                    var dictionary = new Dictionary<string, long>();
-                    dictionary.Add("Gold", 0);
-                    bagContent.Add("Gold", dictionary);
-                }
-
-                bagContent["Gold"]["Gold"] += goodieValue;
-                goldAmount += goodieValue;
-                currentBagCapacity += goodieValue;
-            }
-            else if (goodieName.EndsWith("gem", StringComparison.CurrentCultureIgnoreCase) && (currentBagCapacity + goodieValue) <= bagCapacity)
-            {
-                if (goldAmount >= (gemsAmount + goodieValue))
-                {
-                    if (!bagContent.ContainsKey("Gem"))
+                    if (!bagContent.ContainsKey("Gold"))
                     {
                         var dictionary = new Dictionary<string, long>();
-                        dictionary.Add(goodieName, 0);
-                        bagContent.Add("Gem", dictionary);
+                        dictionary.Add("Gold", 0);
+                        bagContent.Add("Gold", dictionary);
                     }
 
-                    if (!bagContent["Gem"].ContainsKey(goodieName))
-                    {
-                        bagContent["Gem"].Add(goodieName, 0);
-                    }
-
-                    bagContent["Gem"][goodieName] += goodieValue;
-                    gemsAmount += goodieValue;
+                    bagContent["Gold"]["Gold"] += goodieValue;
+                    goldAmount += goodieValue;
                     currentBagCapacity += goodieValue;
                 }
-            }
-            else if (goodieName.Length == 3 && (currentBagCapacity + goodieValue) <= bagCapacity)
-            {
-                if (gemsAmount >= (cashAmount + goodieValue))
+                else if (goodieName.EndsWith("gem", StringComparison.CurrentCultureIgnoreCase) && goodieName.Length >= 4)
                 {
-                    if (!bagContent.ContainsKey("Cash"))
+                    if (goldAmount >= (gemsAmount + goodieValue))
                     {
-                        var dictionary = new Dictionary<string, long>();
-                        dictionary.Add(goodieName, 0);
-                        bagContent.Add("Cash", dictionary);
-                    }
+                        if (!bagContent.ContainsKey("Gem"))
+                        {
+                            var dictionary = new Dictionary<string, long>();
+                            dictionary.Add(goodieName, 0);
+                            bagContent.Add("Gem", dictionary);
+                        }
 
-                    if (!bagContent["Cash"].ContainsKey(goodieName))
+                        if (!bagContent["Gem"].ContainsKey(goodieName))
+                        {
+                            bagContent["Gem"].Add(goodieName, 0);
+                        }
+
+                        bagContent["Gem"][goodieName] += goodieValue;
+                        gemsAmount += goodieValue;
+                        currentBagCapacity += goodieValue;
+                    }
+                }
+                else if (goodieName.Length == 3)
+                {
+                    if (gemsAmount >= (cashAmount + goodieValue))
                     {
-                        bagContent["Cash"].Add(goodieName, 0);
-                    }
+                        if (!bagContent.ContainsKey("Cash"))
+                        {
+                            var dictionary = new Dictionary<string, long>();
+                            dictionary.Add(goodieName, 0);
+                            bagContent.Add("Cash", dictionary);
+                        }
 
-                    bagContent["Cash"][goodieName] += goodieValue;
-                    cashAmount += goodieValue;
-                    currentBagCapacity += goodieValue;
+                        if (!bagContent["Cash"].ContainsKey(goodieName))
+                        {
+                            bagContent["Cash"].Add(goodieName, 0);
+                        }
+
+                        bagContent["Cash"][goodieName] += goodieValue;
+                        cashAmount += goodieValue;
+                        currentBagCapacity += goodieValue;
+                    }
                 }
             }
         }
