@@ -6,6 +6,8 @@ public class Dough
     private const double CALORIES_MODIFIER = 2;
     private const int MIN_WEIGHT = 1;
     private const int MAX_WEIGHT = 200;
+    private readonly string InvalidDoughExceptionMessage = "Invalid type of dough.";
+    private readonly string DoughWeightOutOfRangeExceptionMessage = $"Dough weight should be in the range [{MIN_WEIGHT}..{MAX_WEIGHT}].";
 
     private int weight;
     private string flourType;
@@ -25,6 +27,7 @@ public class Dough
 
     public double Calories => CALORIES_MODIFIER * this.Weight * flourTypeModifiers[this.FlourType.ToLower()] *
                                      bakingTechniqueModifiers[this.BakingTechnique.ToLower()];
+
     public int Weight
     {
         get => this.weight;
@@ -32,7 +35,7 @@ public class Dough
         {
             if (value < MIN_WEIGHT || value > MAX_WEIGHT)
             {
-                throw new ArgumentException($"Dough weight should be in the range [{MIN_WEIGHT}..{MAX_WEIGHT}].");
+                throw new ArgumentException(DoughWeightOutOfRangeExceptionMessage);
             }
 
             this.weight = value;
@@ -46,7 +49,7 @@ public class Dough
         {
             if (!flourTypeModifiers.ContainsKey(value.ToLower()))
             {
-                throw new ArgumentException("Invalid type of dough.");
+                throw new ArgumentException(InvalidDoughExceptionMessage);
             }
 
             this.flourType = value;
@@ -60,7 +63,7 @@ public class Dough
         {
             if (!bakingTechniqueModifiers.ContainsKey(value.ToLower()))
             {
-                throw new ArgumentException("Invalid type of dough.");
+                throw new ArgumentException(InvalidDoughExceptionMessage);
             }
 
             this.bakingTechnique = value;

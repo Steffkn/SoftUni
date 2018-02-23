@@ -11,7 +11,7 @@ public class Person
         get => name;
         set
         {
-            if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrWhiteSpace(value))
             {
                 throw new ArgumentException("Name cannot be empty");
             }
@@ -22,7 +22,7 @@ public class Person
 
     public decimal Money
     {
-        get => money;
+        get => this.money;
         set
         {
             if (value < 0)
@@ -30,7 +30,7 @@ public class Person
                 throw new ArgumentException("Money cannot be negative");
             }
 
-            money = value;
+            this.money = value;
         }
     }
 

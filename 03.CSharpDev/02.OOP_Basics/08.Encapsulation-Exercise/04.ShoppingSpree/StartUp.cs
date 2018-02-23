@@ -9,7 +9,6 @@ class StartUp
     {
         try
         {
-
             var people = Console.ReadLine()
                 .Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(x =>

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 public class Product
 {
@@ -9,21 +7,21 @@ public class Product
 
     public string Name
     {
-        get => _name;
+        get => this._name;
         set
         {
-            if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrWhiteSpace(value))
             {
                 throw new ArgumentException("Name cannot be empty");
             }
 
-            _name = value;
+            this._name = value;
         }
     }
 
     public decimal Cost
     {
-        get => _cost;
+        get => this._cost;
         private set
         {
             if (value < 0)
@@ -31,7 +29,7 @@ public class Product
                 throw new ArgumentException("Money cannot be negative");
             }
 
-            _cost = value;
+            this._cost = value;
         }
     }
 

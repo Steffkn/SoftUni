@@ -6,6 +6,10 @@ public class Pizza
 {
     private const int MIN_NAME_LENGHT = 1;
     private const int MAX_NAME_LENGHT = 15;
+    private const int MIN_NUMBER_OF_TOPPINGS = 0;
+    private const int MAX_NUMBER_OF_TOPPINGS = 10;
+    private readonly string PizzaNameMissingOrOutOfRangeExceptionMessage = $"Pizza name should be between {MIN_NAME_LENGHT} and {MAX_NAME_LENGHT} symbols.";
+    private readonly string NumberOfToppingsOutOfRangeExceptionMessage = $"Number of toppings should be in range [{MIN_NUMBER_OF_TOPPINGS}..{MAX_NUMBER_OF_TOPPINGS}].";
 
     private string name;
 
@@ -17,7 +21,7 @@ public class Pizza
         {
             if (string.IsNullOrEmpty(value.Trim()) || (value.Length < MIN_NAME_LENGHT || value.Length > MAX_NAME_LENGHT))
             {
-                throw new ArgumentException("Pizza name should be between 1 and 15 symbols.");
+                throw new ArgumentException(PizzaNameMissingOrOutOfRangeExceptionMessage);
             }
 
             this.name = value;
@@ -32,7 +36,7 @@ public class Pizza
     {
         get
         {
-            return this.Toppings.Select(x => x.Calories).Sum() + this.Dough.Calories;
+            return this.Toppings.Sum(x => x.Calories) + this.Dough.Calories;
         }
     }
 
@@ -45,9 +49,9 @@ public class Pizza
     public void AddTopping(Topping topping)
     {
         this.Toppings.Add(topping);
-        if (this.Toppings.Count > 10)
+        if (this.Toppings.Count > MAX_NUMBER_OF_TOPPINGS)
         {
-            throw new ArgumentException("Number of toppings should be in range [0..10].");
+            throw new ArgumentException(NumberOfToppingsOutOfRangeExceptionMessage);
         }
     }
 }

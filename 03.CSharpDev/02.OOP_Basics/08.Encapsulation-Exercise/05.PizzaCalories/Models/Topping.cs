@@ -6,6 +6,8 @@ public class Topping
     private readonly double CALORIES_MODIFIER = 2;
     private readonly int MIN_WEIGHT = 1;
     private readonly int MAX_WEIGHT = 50;
+    private readonly string WeightOutOfRangeExceptionMessage = "{0} weight should be in the range [{1}..{2}].";
+    private readonly string InvalidToppingExceptionMessage = "Cannot place {0} on top of your pizza.";
 
     private int weight;
     private string toppingType;
@@ -27,7 +29,7 @@ public class Topping
         {
             if (value < MIN_WEIGHT || value > MAX_WEIGHT)
             {
-                throw new ArgumentException($"{this.ToppingType} weight should be in the range[{MIN_WEIGHT}..{MAX_WEIGHT}].");
+                throw new ArgumentException(string.Format(WeightOutOfRangeExceptionMessage, this.ToppingType, MIN_WEIGHT, MAX_WEIGHT));
             }
 
             this.weight = value;
@@ -41,7 +43,7 @@ public class Topping
         {
             if (!toppingTypeModifiers.ContainsKey(value.ToLower()))
             {
-                throw new ArgumentException($"Cannot place {value} on top of your pizza.");
+                throw new ArgumentException(string.Format(InvalidToppingExceptionMessage, value));
             }
 
             this.toppingType = value;
