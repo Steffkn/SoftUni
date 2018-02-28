@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 public class StartUp
 {
@@ -14,9 +13,9 @@ public class StartUp
             var songArgs = Console.ReadLine().Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
             try
             {
-                var artistName = songArgs[0];
-                var songName = songArgs[1];
-                var songLenght = songArgs[2];
+                var artistName = songArgs[0].Trim();
+                var songName = songArgs[1].Trim();
+                var songLenght = songArgs[2].Trim();
 
                 var song = new Song(artistName, songName, songLenght);
 

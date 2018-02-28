@@ -14,10 +14,20 @@ public class Song
 
     private TimeSpan GetSongLength(string songLenght)
     {
-        var timeProperties = songLenght.Split(':');
-        var mins = int.Parse(timeProperties[0]);
-        var secs = int.Parse(timeProperties[1]);
-        
+        var timeProperties = songLenght.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+
+        int mins;
+        int secs;
+        if (!int.TryParse(timeProperties[0], out mins))
+        {
+            throw new InvalidSongLengthException();
+        }
+
+        if (!int.TryParse(timeProperties[1], out secs))
+        {
+            throw new InvalidSongLengthException();
+        }
+
         if (mins < 0 || secs < 0)
         {
             throw new InvalidSongLengthException();
@@ -41,12 +51,13 @@ public class Song
         get => _artistName;
         set
         {
-            if (string.IsNullOrWhiteSpace(value) || value.Length < 3 || value.Length > 20)
+            string name = value.Trim();
+            if (string.IsNullOrWhiteSpace(name) || name.Length < 3 || name.Length > 20)
             {
                 throw new InvalidArtistNameException();
             }
 
-            _artistName = value;
+            _artistName = name;
         }
     }
 
@@ -55,12 +66,13 @@ public class Song
         get => _songName;
         set
         {
-            if (string.IsNullOrWhiteSpace(value) || value.Length < 3 || value.Length > 30)
+            string name = value.Trim();
+            if (string.IsNullOrWhiteSpace(name) || name.Length < 3 || name.Length > 30)
             {
                 throw new InvalidSongNameException();
             }
 
-            _songName = value;
+            _songName = name;
         }
     }
 
