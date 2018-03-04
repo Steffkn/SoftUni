@@ -16,6 +16,6 @@ The courses that are contained in this repository are:
  </li>
 </ol>
 
-![Start](https://img.shields.io/badge/Start-29.07.2017-blue.svg?style=flat-square) 
+![Start](https://img.shields.io/badge/Start-29.07.2017-blue.svg?style=flat-square)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/Steffkn/SoftUni/blob/master/LICENSE)
 

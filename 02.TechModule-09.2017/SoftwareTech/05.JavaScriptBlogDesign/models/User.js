@@ -14,6 +14,8 @@ let userSchema = mongoose.Schema(
 userSchema.method({
     authenticate: function (password) {
         let inputPasswordHash = encryption.hashPassword(password, this.salt);
+        console.log(inputPasswordHash);
+        console.log(this.passwordHash);
         let isSamePasswordHash = inputPasswordHash === this.passwordHash;
 
         return isSamePasswordHash;

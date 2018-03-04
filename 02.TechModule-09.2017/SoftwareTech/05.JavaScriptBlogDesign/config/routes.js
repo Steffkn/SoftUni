@@ -13,6 +13,9 @@ module.exports = (app) => {
 
     app.get('/user/logout', userController.logout);
 
+    app.get('/user/details', userController.detailsGet);
+   //app.post('/user/details', userController.details);
+
     app.get('/article/create', articleController.createGet);
     app.post('/article/create', articleController.createPost);
 
