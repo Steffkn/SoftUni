@@ -25,3 +25,7 @@ The **“Software Technologies”** course provides overview and first steps in 
 
 ![Start](https://img.shields.io/badge/Start-06.11.2017-blue.svg?style=flat-square)
 ![End](https://img.shields.io/badge/End-04.01.2018-blue.svg?style=flat-square)
+
+## Result
+
+[![Software Technologies - October 2017](https://softuni.bg/certificates/details/50720/d6f02aea)](https://softuni.bg/certificates/details/50720/d6f02aea)

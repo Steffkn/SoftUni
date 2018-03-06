@@ -14,6 +14,14 @@ The courses that are contained in this repository are:
    </li>
   </ul>
  </li>
+ <li><a href="https://github.com/Steffkn/SoftUni/tree/master/03.CSharpDev">C# Fundamentals</a>
+  <ul>
+   <li><a href="https://github.com/Steffkn/SoftUni/tree/master/03.CSharpDev/01.Advanced">C# Advanced - January 2018</a> 
+   </li>
+   <li><a href="https://github.com/Steffkn/SoftUni/tree/master/03.CSharpDev/02.OOP_Basics">C# OOP Basics - February 2018</a> 
+   </li>
+  </ul>
+ </li>
 </ol>
 
 ![Start](https://img.shields.io/badge/Start-29.07.2017-blue.svg?style=flat-square)
