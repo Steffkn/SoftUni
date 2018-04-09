@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using P03.Iterator;
-
-namespace P03.IteratorTest
+﻿namespace P03.IteratorTest
 {
     using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+    using P03.Iterator;
     using NUnit.Framework;
     using P03.Iterator.Models;
 
