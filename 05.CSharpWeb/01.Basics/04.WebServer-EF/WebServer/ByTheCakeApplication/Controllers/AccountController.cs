@@ -32,7 +32,11 @@
                 || !req.FormData.ContainsKey(formPasswordKey)
                 || !req.FormData.ContainsKey(formConfirmPasswordKey))
             {
-                return new BadRequestResponse();
+                this.ViewData["error"] = "You have empty fields";
+                this.ViewData["showError"] = "block";
+                this.ViewData["authDisplay"] = "none";
+
+                return this.FileViewResponse(@"account\register");
             }
 
             string name = req.FormData[formNameKey];
@@ -40,13 +44,14 @@
             string password = req.FormData[formPasswordKey];
             string confirmPassword = req.FormData[formConfirmPasswordKey];
 
-            if (string.IsNullOrWhiteSpace(name)
-                || string.IsNullOrWhiteSpace(username)
+            if (string.IsNullOrWhiteSpace(name) || name.Length < 3
+                || string.IsNullOrWhiteSpace(username) || username.Length < 3
                 || string.IsNullOrWhiteSpace(password)
                 || string.IsNullOrWhiteSpace(confirmPassword))
             {
-                this.ViewData["error"] = "You have empty fields";
+                this.ViewData["error"] = "You have wrong fields";
                 this.ViewData["showError"] = "block";
+                this.ViewData["authDisplay"] = "none";
 
                 return this.FileViewResponse(@"account\register");
             }
@@ -64,10 +69,10 @@
                 RegistrationDate = DateTime.UtcNow
             };
 
-            using (var context = new ByTheCakeContext())
+            using (this.Context)
             {
-                context.Users.Add(user);
-                context.SaveChanges();
+                this.Context.Users.Add(user);
+                this.Context.SaveChanges();
             }
 
             req.Session.Add(SessionStore.CurrentUserKey, name);
@@ -103,13 +108,13 @@
             {
                 this.ViewData["error"] = "You have empty fields";
                 this.ViewData["showError"] = "block";
+                this.ViewData["authDisplay"] = "none";
 
                 return this.FileViewResponse(@"account\login");
             }
-
-            using (var context = new ByTheCakeContext())
+            using (this.Context)
             {
-                var dbUser = context.Users.FirstOrDefault(user => user.Username == name);
+                var dbUser = this.Context.Users.FirstOrDefault(user => user.Username == name);
                 if (dbUser == null)
                 {
                     this.ViewData["error"] = "Invalid credentials";

@@ -1,5 +1,6 @@
 ﻿namespace HTTPServer.ByTheCakeApplication.Infrastructure
 {
+    using HTTPServer.ByTheCakeApplication.Data;
     using Server.Enums;
     using Server.Http.Contracts;
     using Server.Http.Response;
@@ -19,7 +20,11 @@
             {
                 ["authDisplay"] = "block"
             };
+
+            this.Context = new ByTheCakeContext();
         }
+
+        protected ByTheCakeContext Context { get; private set; }
 
         protected IDictionary<string, string> ViewData { get; private set; }
 
