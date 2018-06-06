@@ -1,12 +1,26 @@
 ﻿namespace HTTPServer.ByTheCakeApplication
 {
     using Controllers;
+    using HTTPServer.ByTheCakeApplication.Data;
+    using Microsoft.EntityFrameworkCore;
     using Server.Contracts;
     using Server.Routing.Contracts;
 
     public class ByTheCakeApp : IApplication
     {
         public void Configure(IAppRouteConfig appRouteConfig)
+        {
+            ConfigureDatabase();
+            ConfigureRoutes(appRouteConfig);
+        }
+
+        private static void ConfigureDatabase()
+        {
+            var context = new ByTheCakeContext();
+            context.Database.Migrate();
+        }
+
+        private static void ConfigureRoutes(IAppRouteConfig appRouteConfig)
         {
             appRouteConfig
                 .Get("/", req => new HomeController().Index());
@@ -24,7 +38,7 @@
 
             appRouteConfig
                 .Get(
-                    "/search", 
+                    "/search",
                     req => new CakesController().Search(req));
 
             appRouteConfig

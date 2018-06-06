@@ -1,12 +1,12 @@
-﻿using HTTPServer.ByTheCakeApplication;
-using HTTPServer.Server;
-using HTTPServer.Server.Routing;
-
-namespace HTTPServer
+﻿namespace HTTPServer
 {
-    class Launcher
+    using HTTPServer.ByTheCakeApplication;
+    using HTTPServer.Server;
+    using HTTPServer.Server.Routing;
+
+    public class Launcher
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Run(args);
         }

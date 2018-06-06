@@ -8,9 +8,9 @@
     using System.Linq;
     using Views.Home;
 
-    public abstract class Controller 
+    public abstract class Controller
     {
-        public const string DefaultPath = @"..\..\..\ByTheCakeApplication\Resources\{0}.html";
+        public const string DefaultPath = @"ByTheCakeApplication\Resources\{0}.html";
         public const string ContentPlaceholder = "{{{content}}}";
 
         protected Controller()
@@ -22,7 +22,7 @@
         }
 
         protected IDictionary<string, string> ViewData { get; private set; }
-        
+
         protected IHttpResponse FileViewResponse(string fileName)
         {
             var result = this.ProcessFileHtml(fileName);
@@ -34,7 +34,7 @@
                     result = result.Replace($"{{{{{{{value.Key}}}}}}}", value.Value);
                 }
             }
-            
+
             return new ViewResponse(HttpStatusCode.Ok, new FileView(result));
         }
 
