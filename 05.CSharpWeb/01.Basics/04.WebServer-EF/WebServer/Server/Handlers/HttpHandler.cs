@@ -7,10 +7,15 @@
     using Routing.Contracts;
     using Server.Http;
     using System;
+    using System.Linq;
     using System.Text.RegularExpressions;
 
     public class HttpHandler : IRequestHandler
     {
+        private const string LogintRoute = "/login";
+
+        private const string RegisterRoute = "/register";
+
         private readonly IServerRouteConfig serverRouteConfig;
 
         public HttpHandler(IServerRouteConfig routeConfig)
@@ -25,13 +30,13 @@
             try
             {
                 // Check if user is authenticated
-                var loginPath = "/login";
+                var anonymusAccessiblePaths = new string[] { LogintRoute, RegisterRoute };
 
-                if (context.Request.Path != loginPath &&
-                    (context.Request.Session == null || 
+                if (!anonymusAccessiblePaths.Contains(context.Request.Path) &&
+                    (context.Request.Session == null ||
                     !context.Request.Session.Contains(SessionStore.CurrentUserKey)))
                 {
-                    return new RedirectResponse(loginPath);
+                    return new RedirectResponse(LogintRoute);
                 }
 
                 var requestMethod = context.Request.Method;

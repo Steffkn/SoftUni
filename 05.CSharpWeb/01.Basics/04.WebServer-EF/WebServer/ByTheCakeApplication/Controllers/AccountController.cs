@@ -1,6 +1,9 @@
 ﻿namespace HTTPServer.ByTheCakeApplication.Controllers
 {
     using System;
+    using System.Linq;
+    using HTTPServer.ByTheCakeApplication.Data;
+    using HTTPServer.ByTheCakeApplication.Utilities;
     using Infrastructure;
     using Models;
     using Server.Http;
@@ -9,6 +12,70 @@
 
     public class AccountController : Controller
     {
+        public IHttpResponse Register()
+        {
+            this.ViewData["showError"] = "none";
+            this.ViewData["authDisplay"] = "none";
+
+            return this.FileViewResponse(@"account\register");
+        }
+
+        public IHttpResponse Register(IHttpRequest req)
+        {
+            const string formNameKey = "name";
+            const string formUsernameKey = "username";
+            const string formPasswordKey = "password";
+            const string formConfirmPasswordKey = "confirmPassword";
+
+            if (!req.FormData.ContainsKey(formNameKey)
+                || !req.FormData.ContainsKey(formUsernameKey)
+                || !req.FormData.ContainsKey(formPasswordKey)
+                || !req.FormData.ContainsKey(formConfirmPasswordKey))
+            {
+                return new BadRequestResponse();
+            }
+
+            string name = req.FormData[formNameKey];
+            string username = req.FormData[formUsernameKey];
+            string password = req.FormData[formPasswordKey];
+            string confirmPassword = req.FormData[formConfirmPasswordKey];
+
+            if (string.IsNullOrWhiteSpace(name)
+                || string.IsNullOrWhiteSpace(username)
+                || string.IsNullOrWhiteSpace(password)
+                || string.IsNullOrWhiteSpace(confirmPassword))
+            {
+                this.ViewData["error"] = "You have empty fields";
+                this.ViewData["showError"] = "block";
+
+                return this.FileViewResponse(@"account\register");
+            }
+
+            if (password != confirmPassword)
+            {
+                return new BadRequestResponse();
+            }
+
+            var user = new User()
+            {
+                Name = name,
+                Username = username,
+                PasswordHash = PasswordUtilities.GenerateHash(password),
+                RegistrationDate = DateTime.UtcNow
+            };
+
+            using (var context = new ByTheCakeContext())
+            {
+                context.Users.Add(user);
+                context.SaveChanges();
+            }
+
+            req.Session.Add(SessionStore.CurrentUserKey, name);
+            req.Session.Add(ShoppingCart.SessionKey, new ShoppingCart());
+
+            return new RedirectResponse("/");
+        }
+
         public IHttpResponse Login()
         {
             this.ViewData["showError"] = "none";
@@ -40,8 +107,29 @@
                 return this.FileViewResponse(@"account\login");
             }
 
-            req.Session.Add(SessionStore.CurrentUserKey, name);
-            req.Session.Add(ShoppingCart.SessionKey, new ShoppingCart());
+            using (var context = new ByTheCakeContext())
+            {
+                var dbUser = context.Users.FirstOrDefault(user => user.Username == name);
+                if (dbUser == null)
+                {
+                    this.ViewData["error"] = "Invalid credentials";
+                    this.ViewData["showError"] = "block";
+                    this.ViewData["authDisplay"] = "none";
+                    return this.FileViewResponse(@"account\login");
+                }
+
+                var passwordHash = PasswordUtilities.GenerateHash(password);
+                if (passwordHash != dbUser.PasswordHash)
+                {
+                    this.ViewData["error"] = "Invalid credentials";
+                    this.ViewData["showError"] = "block";
+                    this.ViewData["authDisplay"] = "none";
+                    return this.FileViewResponse(@"account\login");
+                }
+
+                req.Session.Add(SessionStore.CurrentUserKey, dbUser.Username);
+                req.Session.Add(ShoppingCart.SessionKey, new ShoppingCart());
+            }
 
             return new RedirectResponse("/");
         }

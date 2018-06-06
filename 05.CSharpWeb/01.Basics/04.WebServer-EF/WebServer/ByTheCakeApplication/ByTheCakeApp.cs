@@ -43,6 +43,17 @@
 
             appRouteConfig
                 .Get(
+                    "/register",
+                    req => new AccountController().Register());
+
+            appRouteConfig
+                .Post(
+                    "/register",
+                    req => new AccountController().Register(req));
+
+
+            appRouteConfig
+                .Get(
                     "/login",
                     req => new AccountController().Login());
 
