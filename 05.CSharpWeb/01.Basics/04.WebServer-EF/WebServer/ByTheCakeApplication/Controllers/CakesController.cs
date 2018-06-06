@@ -1,10 +1,12 @@
 ﻿namespace HTTPServer.ByTheCakeApplication.Controllers
 {
     using Data;
+    using HTTPServer.Server.Http.Response;
     using Infrastructure;
     using Models;
     using Server.Http.Contracts;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     public class CakesController : Controller
@@ -23,21 +25,48 @@
             return this.FileViewResponse(@"cakes\add");
         }
 
-        public IHttpResponse Add(string name, string price)
+        public IHttpResponse Add(string name, string price, string imageUrl)
         {
-            var cake = new Cake
+            var product = new Product
             {
                 Name = name,
-                Price = decimal.Parse(price)
+                Price = decimal.Parse(price),
+                ImageUrl = imageUrl
             };
-            
-            this.cakesData.Add(name, price);
+
+            using (this.Context)
+            {
+                this.Context.Products.Add(product);
+                this.Context.SaveChanges();
+            }
 
             this.ViewData["name"] = name;
             this.ViewData["price"] = price;
+            this.ViewData["imageUrl"] = imageUrl;
             this.ViewData["showResult"] = "block";
 
             return this.FileViewResponse(@"cakes\add");
+        }
+
+        public IHttpResponse Details(int id)
+        {
+            Product cake = null;
+            using (this.Context)
+            {
+                cake = this.Context.Products.Find(id);
+            }
+
+            if (cake == null)
+            {
+                return new BadRequestResponse();
+            }
+
+            this.ViewData["name"] = cake.Name;
+            this.ViewData["price"] = cake.Price.ToString("F2");
+            this.ViewData["imageUrl"] = cake.ImageUrl;
+            this.ViewData["showResult"] = "block";
+
+            return this.FileViewResponse(@"cakes\details");
         }
 
         public IHttpResponse Search(IHttpRequest req)
@@ -47,24 +76,33 @@
             var urlParameters = req.UrlParameters;
 
             this.ViewData["results"] = string.Empty;
-            this.ViewData["searchTerm"] = string.Empty;
+            this.ViewData[searchTermKey] = string.Empty;
 
             if (urlParameters.ContainsKey(searchTermKey))
             {
                 var searchTerm = urlParameters[searchTermKey];
 
-                this.ViewData["searchTerm"] = searchTerm;
+                this.ViewData[searchTermKey] = searchTerm;
 
-                var savedCakesDivs = this.cakesData
-                    .All()
-                    .Where(c => c.Name.ToLower().Contains(searchTerm.ToLower()))
-                    .Select(c => $@"<div>{c.Name} - ${c.Price:F2} <a href=""/shopping/add/{c.Id}?searchTerm={searchTerm}"">Order</a></div>");
+                IEnumerable<string> cakeResults = null;
+                using (this.Context)
+                {
+                    var lowerSearchTerm = searchTerm.ToLower();
+                    cakeResults = this.Context.Products.Where(cake => cake.Name.ToLower().Contains(lowerSearchTerm))
+                    .Select(c =>
+                    $@"<div>
+                        <img src=""{c.ImageUrl}"" alt=""iamge for {c.Name}"" style=""max-height: 200px;""/>
+                        <br />
+                        <a href=""/cakeDetails/{c.Id}"" target=""_blank"">{c.Name}</a> - ${c.Price:F2} 
+                        <a href=""/shopping/add/{c.Id}?searchTerm={searchTerm}"">Order</a>
+                    </div>")
+                    .ToList();
+                }
 
                 var results = "No cakes found";
-
-                if (savedCakesDivs.Any())
+                if (cakeResults.Any())
                 {
-                    results = string.Join(Environment.NewLine, savedCakesDivs);
+                    results = string.Join(Environment.NewLine, cakeResults);
                 }
 
                 this.ViewData["results"] = results;

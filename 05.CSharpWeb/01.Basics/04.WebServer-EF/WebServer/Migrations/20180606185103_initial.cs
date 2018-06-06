@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HTTPServer.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace HTTPServer.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
                     Price = table.Column<decimal>(nullable: false),
                     ImageUrl = table.Column<string>(nullable: true)
                 },
@@ -29,9 +29,9 @@ namespace HTTPServer.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Username = table.Column<string>(nullable: true),
-                    PasswordHash = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
+                    Username = table.Column<string>(nullable: false),
+                    PasswordHash = table.Column<string>(nullable: false),
                     RegistrationDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -45,7 +45,7 @@ namespace HTTPServer.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(nullable: true)
+                    UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -55,7 +55,7 @@ namespace HTTPServer.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,15 +69,15 @@ namespace HTTPServer.Migrations
                 {
                     table.PrimaryKey("PK_ProductOrders", x => new { x.ProductId, x.OrderId });
                     table.ForeignKey(
-                        name: "FK_ProductOrders_Products_OrderId",
+                        name: "FK_ProductOrders_Orders_OrderId",
                         column: x => x.OrderId,
-                        principalTable: "Products",
+                        principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductOrders_Orders_ProductId",
+                        name: "FK_ProductOrders_Products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "Orders",
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -99,10 +99,10 @@ namespace HTTPServer.Migrations
                 name: "ProductOrders");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Users");

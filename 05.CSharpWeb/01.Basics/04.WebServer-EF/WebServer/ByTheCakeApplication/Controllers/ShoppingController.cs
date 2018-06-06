@@ -7,6 +7,7 @@
     using Server.Http.Response;
     using System.Linq;
     using System;
+    using HTTPServer.Server.Http;
 
     public class ShoppingController : Controller
     {
@@ -21,15 +22,19 @@
         {
             var id = int.Parse(req.UrlParameters["id"]);
 
-            var cake = this.cakesData.Find(id);
+            Product newCake = null;
+            using (this.Context)
+            {
+                newCake = this.Context.Products.Find(id);
+            }
 
-            if (cake == null)
+            if (newCake == null)
             {
                 return new NotFoundResponse();
             }
 
             var shoppingCart = req.Session.Get<ShoppingCart>(ShoppingCart.SessionKey);
-            shoppingCart.Orders.Add(cake);
+            shoppingCart.Orders.Add(newCake);
 
             var redirectUrl = "/search";
 
@@ -61,7 +66,7 @@
                 var totalPrice = shoppingCart
                     .Orders
                     .Sum(i => i.Price);
-                
+
                 this.ViewData["cartItems"] = string.Join(string.Empty, items);
                 this.ViewData["totalCost"] = $"{totalPrice:F2}";
             }
@@ -71,9 +76,34 @@
 
         public IHttpResponse FinishOrder(IHttpRequest req)
         {
-            req.Session.Get<ShoppingCart>(ShoppingCart.SessionKey).Orders.Clear();
+            var userId = req.Session.Get<int>(SessionStore.CurrentUserKey);
+            var products = req.Session.Get<ShoppingCart>(ShoppingCart.SessionKey).Orders;
+            using (this.Context)
+            {
+                var order = new Order()
+                {
+                    UserId = userId,
+                    CreateOn = DateTime.UtcNow,
+                    Sum = products.Sum(p => p.Price),
+                    Products = products.Select(p =>
+                       new ProductOrder()
+                       {
+                           ProductId = p.Id,
+                       }).ToList()
+                };
 
+                this.Context.Add(order);
+                this.Context.SaveChanges();
+            }
+
+            req.Session.Get<ShoppingCart>(ShoppingCart.SessionKey).Orders.Clear();
             return this.FileViewResponse(@"shopping\finish-order");
+        }
+
+        public IHttpResponse EmptyCart(IHttpRequest req)
+        {
+            req.Session.Get<ShoppingCart>(ShoppingCart.SessionKey).Orders.Clear();
+            return new RedirectResponse("/search");
         }
     }
 }

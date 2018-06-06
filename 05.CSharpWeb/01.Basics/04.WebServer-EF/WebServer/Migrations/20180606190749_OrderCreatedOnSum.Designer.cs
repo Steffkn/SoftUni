@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HTTPServer.Migrations
 {
     [DbContext(typeof(ByTheCakeContext))]
-    [Migration("20180606052605_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20180606190749_OrderCreatedOnSum")]
+    partial class OrderCreatedOnSum
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,7 +27,11 @@ namespace HTTPServer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("UserId");
+                    b.Property<DateTime>("CreateOn");
+
+                    b.Property<decimal>("Sum");
+
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
@@ -44,7 +48,8 @@ namespace HTTPServer.Migrations
 
                     b.Property<string>("ImageUrl");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<decimal>("Price");
 
@@ -72,13 +77,16 @@ namespace HTTPServer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
-                    b.Property<string>("PasswordHash");
+                    b.Property<string>("PasswordHash")
+                        .IsRequired();
 
                     b.Property<DateTime>("RegistrationDate");
 
-                    b.Property<string>("Username");
+                    b.Property<string>("Username")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -89,18 +97,19 @@ namespace HTTPServer.Migrations
                 {
                     b.HasOne("HTTPServer.ByTheCakeApplication.Models.User")
                         .WithMany("Orders")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("HTTPServer.ByTheCakeApplication.Models.ProductOrder", b =>
                 {
-                    b.HasOne("HTTPServer.ByTheCakeApplication.Models.Product", "Product")
-                        .WithMany("Orders")
+                    b.HasOne("HTTPServer.ByTheCakeApplication.Models.Order", "Order")
+                        .WithMany("Products")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HTTPServer.ByTheCakeApplication.Models.Order", "Order")
-                        .WithMany("Products")
+                    b.HasOne("HTTPServer.ByTheCakeApplication.Models.Product", "Product")
+                        .WithMany("Orders")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

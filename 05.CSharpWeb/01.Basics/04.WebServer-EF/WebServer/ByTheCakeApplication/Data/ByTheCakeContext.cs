@@ -30,17 +30,21 @@
                 .Entity<Product>()
                 .HasMany(product => product.Orders)
                 .WithOne(order => order.Product)
-                .HasForeignKey(po => po.OrderId);
+                .HasForeignKey(po => po.ProductId);
 
             modelBuilder
                 .Entity<Order>()
                 .HasMany(order => order.Products)
                 .WithOne(product => product.Order)
-                .HasForeignKey(po => po.ProductId);
+                .HasForeignKey(po => po.OrderId);
 
             modelBuilder
                 .Entity<ProductOrder>()
                 .HasKey(po => new { po.ProductId, po.OrderId });
+
+            modelBuilder
+                .Entity<User>()
+                .HasKey(u => u.Id);
 
             base.OnModelCreating(modelBuilder);
         }

@@ -25,7 +25,11 @@ namespace HTTPServer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("UserId");
+                    b.Property<DateTime>("CreateOn");
+
+                    b.Property<decimal>("Sum");
+
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
@@ -91,18 +95,19 @@ namespace HTTPServer.Migrations
                 {
                     b.HasOne("HTTPServer.ByTheCakeApplication.Models.User")
                         .WithMany("Orders")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("HTTPServer.ByTheCakeApplication.Models.ProductOrder", b =>
                 {
-                    b.HasOne("HTTPServer.ByTheCakeApplication.Models.Product", "Product")
-                        .WithMany("Orders")
+                    b.HasOne("HTTPServer.ByTheCakeApplication.Models.Order", "Order")
+                        .WithMany("Products")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HTTPServer.ByTheCakeApplication.Models.Order", "Order")
-                        .WithMany("Products")
+                    b.HasOne("HTTPServer.ByTheCakeApplication.Models.Product", "Product")
+                        .WithMany("Orders")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

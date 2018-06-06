@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HTTPServer.Migrations
 {
     [DbContext(typeof(ByTheCakeContext))]
-    [Migration("20180606054427_ValidationMigration")]
-    partial class ValidationMigration
+    [Migration("20180606185103_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,7 +27,7 @@ namespace HTTPServer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
@@ -93,18 +93,19 @@ namespace HTTPServer.Migrations
                 {
                     b.HasOne("HTTPServer.ByTheCakeApplication.Models.User")
                         .WithMany("Orders")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("HTTPServer.ByTheCakeApplication.Models.ProductOrder", b =>
                 {
-                    b.HasOne("HTTPServer.ByTheCakeApplication.Models.Product", "Product")
-                        .WithMany("Orders")
+                    b.HasOne("HTTPServer.ByTheCakeApplication.Models.Order", "Order")
+                        .WithMany("Products")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("HTTPServer.ByTheCakeApplication.Models.Order", "Order")
-                        .WithMany("Products")
+                    b.HasOne("HTTPServer.ByTheCakeApplication.Models.Product", "Product")
+                        .WithMany("Orders")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

@@ -34,12 +34,17 @@
             appRouteConfig
                 .Post(
                     "/add",
-                    req => new CakesController().Add(req.FormData["name"], req.FormData["price"]));
+                    req => new CakesController().Add(req.FormData["name"], req.FormData["price"], req.FormData["imageUrl"]));
 
             appRouteConfig
                 .Get(
                     "/search",
                     req => new CakesController().Search(req));
+
+            appRouteConfig
+                .Get(
+                    "/cakeDetails/{(?<id>[0-9]+)}",
+                    req => new CakesController().Details(int.Parse(req.UrlParameters["id"])));
 
             appRouteConfig
                 .Get(
@@ -51,6 +56,10 @@
                     "/register",
                     req => new AccountController().Register(req));
 
+            appRouteConfig
+                .Get(
+                    "/profile",
+                    req => new AccountController().Profile(req));
 
             appRouteConfig
                 .Get(
@@ -81,6 +90,21 @@
                 .Post(
                     "/shopping/finish-order",
                     req => new ShoppingController().FinishOrder(req));
+
+            appRouteConfig
+                .Get(
+                    "/shopping/empty-cart",
+                    req => new ShoppingController().EmptyCart(req));
+
+            appRouteConfig
+                .Get(
+                    "/orders",
+                    req => new AccountController().Orders(req));
+
+            appRouteConfig
+              .Get(
+                  "/orderDetails/{(?<id>[0-9]+)}",
+                  req => new AccountController().OrderDetails(int.Parse(req.UrlParameters["id"])));
         }
     }
 }
