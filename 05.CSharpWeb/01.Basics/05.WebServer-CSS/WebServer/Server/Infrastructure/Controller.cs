@@ -38,7 +38,11 @@
 
         private string ProcessFileHtml(string fileName)
         {
-            var layoutHtml = File.ReadAllText(string.Format(ApplicationSettings.DefaultPath, ApplicationSettings.ProjectName, ApplicationSettings.LayoutName));
+            var layoutHtml = File.ReadAllText(
+                string.Format(
+                    ApplicationSettings.DefaultPath, 
+                    ApplicationSettings.ProjectName, 
+                    ApplicationSettings.LayoutName));
 
             var fileHtml = File
                 .ReadAllText(string.Format(ApplicationSettings.DefaultPath, ApplicationSettings.ProjectName, fileName));

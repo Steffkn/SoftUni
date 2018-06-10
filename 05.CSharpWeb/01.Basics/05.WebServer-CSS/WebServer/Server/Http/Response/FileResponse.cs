@@ -14,6 +14,14 @@
                 this.StatusCode = HttpStatusCode.Ok;
                 string fileContent = streamReader.ReadToEnd();
                 this.Content = fileContent;
+
+                var headerType = "text/plain";
+                if (filePath.EndsWith(".css"))
+                {
+                    headerType = "text/css";
+                }
+
+                this.Headers.Add(HttpHeader.ContentType, headerType);
             }
         }
 
