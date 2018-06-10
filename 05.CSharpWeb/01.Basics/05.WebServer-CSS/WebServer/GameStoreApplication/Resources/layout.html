@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Buy the cake in By the Cake">
+    <meta name="keywords" content="cakes, buy">
+    <meta name="author" content="Your name">
+    <title>Game store</title>
+    <link href="/Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/bootstrap.grid.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/bootstrap.reboot.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light bg-warning">
+            <div class="container">
+                <a class="navbar-brand" href="#">SoftUni Store</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Cart</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">Register</a>
+                        </li>
+                        <li class="nav-item" style="display: {{{authDisplay}}}">
+                            <form method="post" action="/logout">
+                                <input type="submit" value="Logout" class="btn btn-outline-info" />
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <br />
+    {{{content}}}
+    <hr />
+    <!--Footer-->
+    <footer>
+        <div class="container modal-footer">
+            <p>&copy; 2017 - Software University Foundation</p>
+        </div>
+    </footer>
+
+    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
