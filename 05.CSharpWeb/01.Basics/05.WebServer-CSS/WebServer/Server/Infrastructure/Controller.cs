@@ -1,6 +1,8 @@
 ﻿namespace HTTPServer.Server.Infrastructure
 {
     using HTTPServer.Server.Common;
+    using HTTPServer.Server.Contracts;
+    using HTTPServer.Server.Http;
     using HTTPServer.Server.Views;
     using Server.Enums;
     using Server.Http.Contracts;
@@ -11,19 +13,42 @@
 
     public abstract class Controller
     {
-        protected Controller()
+        public IUserPrincipal User { get; set; }
+
+        protected Controller(IHttpRequest req)
         {
             this.ViewData = new Dictionary<string, string>
             {
                 ["authDisplay"] = "block"
             };
+
+            this.PartialViews = new Dictionary<string, string>();
+
+            if (req.Session.Contains(SessionStore.CurrentUserKey))
+            {
+                this.User = req.Session.Get<IUserPrincipal>(SessionStore.CurrentUserKey);
+            }
         }
+
+        protected IDictionary<string, string> PartialViews { get; private set; }
 
         protected IDictionary<string, string> ViewData { get; private set; }
 
         protected IHttpResponse FileViewResponse(string fileName)
         {
             var result = this.ProcessFileHtml(fileName);
+
+            if (this.PartialViews.Any())
+            {
+                foreach (var value in this.PartialViews)
+                {
+                    var navigationHtml = File.ReadAllText(string.Format(
+                       ApplicationSettings.DefaultPath,
+                       ApplicationSettings.ProjectName,
+                       value.Value));
+                    result = result.Replace($"{{{{{{{value.Key}}}}}}}", navigationHtml);
+                }
+            }
 
             if (this.ViewData.Any())
             {
@@ -38,16 +63,19 @@
 
         private string ProcessFileHtml(string fileName)
         {
+            const string ContentPlaceholder = "{{{content}}}";
+
             var layoutHtml = File.ReadAllText(
-                string.Format(
-                    ApplicationSettings.DefaultPath, 
-                    ApplicationSettings.ProjectName, 
-                    ApplicationSettings.LayoutName));
+                    string.Format(
+                        ApplicationSettings.DefaultPath,
+                        ApplicationSettings.ProjectName,
+                        ApplicationSettings.LayoutName));
 
-            var fileHtml = File
-                .ReadAllText(string.Format(ApplicationSettings.DefaultPath, ApplicationSettings.ProjectName, fileName));
-
-            var result = layoutHtml.Replace(ApplicationSettings.ContentPlaceholder, fileHtml);
+            var fileHtml = File.ReadAllText(string.Format(
+                    ApplicationSettings.DefaultPath,
+                    ApplicationSettings.ProjectName,
+                    fileName));
+            var result = layoutHtml.Replace(ContentPlaceholder, fileHtml);
 
             return result;
         }

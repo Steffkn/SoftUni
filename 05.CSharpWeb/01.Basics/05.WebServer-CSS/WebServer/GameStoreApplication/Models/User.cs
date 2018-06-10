@@ -1,5 +1,6 @@
 ﻿namespace HTTPServer.GameStoreApplication.Models
 {
+    using HTTPServer.Server.Contracts;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 

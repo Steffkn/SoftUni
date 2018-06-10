@@ -11,7 +11,8 @@
     <link href="/Styles/bootstrap-reboot.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <header>
+    <!-- Header -->
+    <!-- <header>
         <nav class="navbar navbar-expand-md navbar-light bg-warning">
             <div class="container">
                 <a class="navbar-brand" href="#">SoftUni Store</a>
@@ -23,6 +24,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
+                            Layout
                             <a class="nav-link" href="#">Cart</a>
                         </li>
                     </ul>
@@ -35,7 +37,7 @@
                         </li>
                         <li class="nav-item" style="display: {{{authDisplay}}}">
                             <form method="post" action="/logout">
-                                <input type="submit" value="Logout" class="btn btn-outline-info" />
+                                <input type="submit" value="Logout" class=" nav-link btn btn-link" />
                             </form>
                         </li>
                     </ul>
@@ -44,14 +46,17 @@
             </div>
         </nav>
     </header>
+    -->
+    {{{navigation}}}
     {{{content}}}
-    <!--Footer-->
+    <!-- Footer -->
     <footer>
         <div class="container modal-footer">
             <p>&copy; 2017 - Software University Foundation</p>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="/Scripts/jquery-3.1.1.min.js"></script>
     <script src="/Scripts/popper.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>

@@ -7,7 +7,6 @@
     using Routing.Contracts;
     using Server.Http;
     using System;
-    using System.IO;
     using System.Linq;
     using System.Text.RegularExpressions;
 
@@ -26,14 +25,14 @@
         {
             try
             {
-                // Check if user is authenticated
-                const string LoginPath = "/login";
-                const string RegisterPath = "/register";
+                //// Check if user is authenticated
+                // const string LoginPath = "/login";
+                // const string RegisterPath = "/register";
 
                 const string StylesFolder = "/Styles";
                 const string ScriptsFolder = "/Scripts";
 
-                var anonymousAccessibleRoutes = new[] { LoginPath, RegisterPath };
+                // var anonymousAccessibleRoutes = new[] { LoginPath, RegisterPath };
                 var allowedFolders = new[] { StylesFolder, ScriptsFolder };
 
                 if (allowedFolders.Any(folder => context.Request.Path.StartsWith(folder)))
@@ -41,12 +40,12 @@
                     return new FileResponse(context.Request.Path);
                 }
 
-                if (!anonymousAccessibleRoutes.Contains(context.Request.Path) &&
-                    (context.Request.Session == null ||
-                    !context.Request.Session.Contains(SessionStore.CurrentUserKey)))
-                {
-                    return new RedirectResponse(LoginPath);
-                }
+                //if (!anonymousAccessibleRoutes.Contains(context.Request.Path) &&
+                //    (context.Request.Session == null ||
+                //    !context.Request.Session.Contains(SessionStore.CurrentUserKey)))
+                //{
+                //    return new RedirectResponse(LoginPath);
+                //}
 
                 var requestMethod = context.Request.Method;
                 var requestPath = context.Request.Path;

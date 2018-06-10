@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using HTTPServer.GameStoreApplication.Data;
+    using HTTPServer.GameStoreApplication.Extensions;
     using HTTPServer.GameStoreApplication.Models;
     using HTTPServer.GameStoreApplication.ViewModels;
     using HTTPServer.Server.Common;
@@ -13,16 +14,17 @@
     using HTTPServer.Services;
     using HTTPServer.Services.Contracts;
 
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private IUserDataService userData;
 
-        public AccountController()
-            : this(new UserDataService(new GameStoreContext()))
+        public AccountController(IHttpRequest req)
+            : this(req, new UserDataService(new GameStoreContext()))
         {
         }
 
-        public AccountController(IUserDataService userData)
+        public AccountController(IHttpRequest req, IUserDataService userData)
+            : base(req)
         {
             this.userData = userData;
         }
@@ -42,15 +44,19 @@
                 var isValid = this.ValidateRegisterViewModel(model);
                 if (!isValid)
                 {
-                    DisplayError("You have wrong fields");
                     return this.FileViewResponse(@"account\register");
                 }
 
                 var passwordHash = PasswordUtilities.GenerateHash(model.Password);
-                this.userData.Create(model.Email, passwordHash, model.FullName);
+                var user = this.userData.Create(model.Email, passwordHash, model.FullName);
+                if (user != null)
+                {
+                    this.User = user;
+                    req.Session.Add(SessionStore.CurrentUserKey, this.User);
+                    req.Session.Add(ShoppingCart.SessionKey, new ShoppingCart());
+                }
             }
 
-            CompleteLogin(req, model.Email);
             return new RedirectResponse("/");
         }
 
@@ -69,22 +75,29 @@
                 var isValid = this.ValidateLoginViewModel(model);
                 if (!isValid)
                 {
-                    DisplayError("You have wrong fields");
                     return this.FileViewResponse(@"account\login");
                 }
-            }
 
-            req.Session.Add(SessionStore.CurrentUserKey, model.Email);
-            req.Session.Add(ShoppingCart.SessionKey, new ShoppingCart());
+                UserPrincipal user = this.userData.GetByEmail(model.Email);
+                if (user != null)
+                {
+                    user.IsAuthenticated = true;
+                    this.User = user;
+                    req.Session.Add(SessionStore.CurrentUserKey, this.User);
+                    if (!req.Session.Contains(ShoppingCart.SessionKey))
+                    {
+                        req.Session.Add(ShoppingCart.SessionKey, new ShoppingCart());
+                    }
+                }
+            }
 
             return new RedirectResponse("/");
         }
 
         public IHttpResponse Logout(IHttpRequest req)
         {
-            req.Session.Clear();
-
-            return new RedirectResponse("/login");
+            req.Session.Add(SessionStore.CurrentUserKey, new UserPrincipal() { IsAuthenticated = false });
+            return new RedirectResponse("/");
         }
 
         private bool ValidateLoginViewModel(LoginViewModel model)
@@ -166,12 +179,6 @@
             this.ViewData["error"] = errorMessage;
             this.ViewData["showError"] = "block";
             this.ViewData["authDisplay"] = "none";
-        }
-
-        private static void CompleteLogin(IHttpRequest req, string email)
-        {
-            req.Session.Add(SessionStore.CurrentUserKey, email);
-            req.Session.Add(ShoppingCart.SessionKey, new ShoppingCart());
         }
     }
 }

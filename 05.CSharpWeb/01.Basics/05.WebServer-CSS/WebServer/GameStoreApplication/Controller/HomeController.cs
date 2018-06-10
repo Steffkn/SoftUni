@@ -1,12 +1,28 @@
-﻿using HTTPServer.Server.Http.Contracts;
-
-namespace HTTPServer.GameStoreApplication.Controller
+﻿namespace HTTPServer.GameStoreApplication.Controller
 {
-    public class HomeController : Server.Infrastructure.Controller
+    using HTTPServer.GameStoreApplication.Extensions;
+    using HTTPServer.Server.Http.Contracts;
+
+    public class HomeController : BaseController
     {
-        public IHttpResponse Index()
+        public HomeController(IHttpRequest req)
+            : base(req)
         {
-            return this.FileViewResponse(@"home/index");
+        }
+
+        public IHttpResponse Index(IHttpRequest req)
+        {
+            if (this.User != null && this.User.IsAuthenticated)
+            {
+                if (this.User.IsInRole("Admin"))
+                {
+                    return this.FileViewResponse(@"home/admin-home");
+                }
+
+                return this.FileViewResponse(@"home/user-home");
+            }
+
+            return this.FileViewResponse(@"home/guest-home");
         }
     }
 }
