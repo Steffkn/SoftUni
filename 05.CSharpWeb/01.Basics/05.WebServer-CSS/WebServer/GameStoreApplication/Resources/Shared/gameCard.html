@@ -1,0 +1,21 @@
+﻿<div class="card col-4 thumbnail">
+    <img class="card-image-top img-fluid img-thumbnail"
+         onerror="this.src='https://i.ytimg.com/vi/{{{ytVideo}}}/maxresdefault.jpg';"
+         src="{{{imageUrl}}}">
+
+    <div class="card-body">
+        <h4 class="card-title">{{{title}}}</h4>
+        <p class="card-text"><strong>Price</strong> - {{{price}}}&euro;</p>
+        <p class="card-text"><strong>Size</strong> - {{{size}}} GB</p>
+        <p class="card-text">{{{description}}}</p>
+    </div>
+    <div class="card-footer">
+        <span style="display: {{{displayAdminBtn}}}" ">
+            <a class="card-button btn btn-warning" name="edit" href="/game/edit/{{{id}}}">Edit</a>
+            <a class="card-button btn btn-danger" name="delete" href="/game/delete/{{{id}}}">Delete</a>
+        </span>
+
+        <a class="card-button btn btn-outline-primary" name="info" href="/game/details/{{{id}}}">Info</a>
+        <a class="card-button btn btn-primary" name="buy" href="/cart/add/{{{id}}}">Buy</a>
+    </div>
+</div>

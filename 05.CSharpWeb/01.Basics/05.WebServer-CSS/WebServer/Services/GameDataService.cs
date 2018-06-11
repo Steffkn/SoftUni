@@ -2,6 +2,7 @@
 using HTTPServer.GameStoreApplication.Models;
 using HTTPServer.GameStoreApplication.ViewModels;
 using HTTPServer.Services.Contracts;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace HTTPServer.Services
@@ -46,9 +47,65 @@ namespace HTTPServer.Services
             return this.context.Games.Any(game => game.Title == title);
         }
 
+        public IEnumerable<GameInfo> GetAll()
+        {
+            return this.context.Games.AsEnumerable<Game>().Select(model => new GameInfo()
+            {
+                Id = model.Id,
+                Title = model.Title,
+                Trailer = model.Trailer,
+                Image = model.Image,
+                SizeGB = model.SizeGB,
+                Price = model.Price,
+                Description = model.Description,
+                ReleaseDate = model.ReleaseDate
+            });
+        }
+
+        public GameInfo GetById(int id)
+        {
+            var model = this.context.Games.Find(id);
+            if (model != null)
+            {
+                return new GameInfo()
+                {
+                    Id = model.Id,
+                    Title = model.Title,
+                    Trailer = model.Trailer,
+                    Image = model.Image,
+                    SizeGB = model.SizeGB,
+                    Price = model.Price,
+                    Description = model.Description,
+                    ReleaseDate = model.ReleaseDate
+                };
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public GameInfo GetByTitle(string title)
         {
-            throw new System.NotImplementedException();
+            var model = this.context.Games.FirstOrDefault(g => g.Title == title);
+            if (model != null)
+            {
+                return new GameInfo()
+                {
+                    Id = model.Id,
+                    Title = model.Title,
+                    Trailer = model.Trailer,
+                    Image = model.Image,
+                    SizeGB = model.SizeGB,
+                    Price = model.Price,
+                    Description = model.Description,
+                    ReleaseDate = model.ReleaseDate
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
