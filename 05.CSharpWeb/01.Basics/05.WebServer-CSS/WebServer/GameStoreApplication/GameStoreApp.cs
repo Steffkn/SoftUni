@@ -34,10 +34,10 @@
                     "/register",
                     req => new AccountController(req).Register(req, new RegisterViewModel()
                     {
-                        Email = req.FormData["email"],
-                        Password = req.FormData["password"],
-                        ConfirmPassword = req.FormData["confirmPassword"],
-                        FullName = req.FormData["fullName"],
+                        Email = req.FormData["email"] ?? null,
+                        Password = req.FormData["password"] ?? null,
+                        ConfirmPassword = req.FormData["confirmPassword"] ?? null,
+                        FullName = req.FormData["fullName"] ?? null,
                     }));
 
             appRouteConfig.Post("/logout",
@@ -49,10 +49,9 @@
             appRouteConfig.Post("/login",
                 req => new AccountController(req).Login(req, new LoginViewModel
                 {
-                    Email = req.FormData["email"],
-                    Password = req.FormData["password"],
+                    Email = req.FormData["email"] ?? null,
+                    Password = req.FormData["password"] ?? null,
                 }));
-
 
             appRouteConfig
                 .Get(
@@ -73,14 +72,29 @@
                     "/game/add",
                     req => new GameController(req).AddGame(req, new AddGameViewModel()
                     {
-                        Title = req.FormData["title"],
-                        Description = req.FormData["description"],
-                        Image = req.FormData["thumbnailUrl"],
-                        Price = decimal.Parse(req.FormData["price"]),
-                        SizeGB = req.FormData["size"],
-                        Trailer = req.FormData["ytVideoUrl"],
-                        ReleaseDate = DateTime.Parse(req.FormData["releaseDate"])
+                        Title = req.FormData["title"] ?? null,
+                        Description = req.FormData["description"] ?? null,
+                        Image = req.FormData["thumbnailUrl"] ?? null,
+                        Price = decimal.Parse(req.FormData["price"] ?? "-1"),
+                        SizeGB = req.FormData["size"] ?? null,
+                        Trailer = req.FormData["ytVideoUrl"] ?? null,
+                        ReleaseDate = DateTime.Parse(req.FormData["releaseDate"] ?? null)
                     }));
+
+            appRouteConfig
+                .Get(
+                    "/cart",
+                    req => new GameController(req).ShowCart(req));
+
+            appRouteConfig
+                .Get(
+                    "/cart/add/{(?<id>[0-9]+)}",
+                    req => new GameController(req).AddToCart(req, int.Parse(req.UrlParameters["id"])));
+
+            appRouteConfig
+                .Get(
+                    "/game/details/{(?<id>[0-9]+)}",
+                    req => new GameController(req).GameDetails(int.Parse(req.UrlParameters["id"])));
         }
 
         private void ConfigureDatabase()

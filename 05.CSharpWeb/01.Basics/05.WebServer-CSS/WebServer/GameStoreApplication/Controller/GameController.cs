@@ -1,7 +1,12 @@
 ﻿namespace HTTPServer.GameStoreApplication.Controller
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using HTTPServer.GameStoreApplication.Data;
+    using HTTPServer.GameStoreApplication.Extensions;
+    using HTTPServer.GameStoreApplication.Models;
+    using HTTPServer.GameStoreApplication.Utilities;
     using HTTPServer.GameStoreApplication.ViewModels;
     using HTTPServer.Server.Http.Contracts;
     using HTTPServer.Server.Http.Response;
@@ -46,11 +51,88 @@
                 var gameCreated = this.gameData.Create(model);
                 if (gameCreated)
                 {
-                    return new RedirectResponse("game/admin");
+                    return new RedirectResponse("/game/admin");
                 }
             }
 
             return this.FileViewResponse(@"game\add-game");
+        }
+
+        public IHttpResponse GameDetails(int id)
+        {
+            var game = this.gameData.GetById(id);
+            if (game == null)
+            {
+                return new RedirectResponse("/");
+            }
+
+            this.ViewData["id"] = game.Id.ToString();
+            this.ViewData["ytVideo"] = game.Trailer;
+            this.ViewData["imageUrl"] = game.Image;
+            this.ViewData["title"] = game.Title;
+            this.ViewData["price"] = game.Price.ToString("F2");
+            this.ViewData["size"] = game.SizeGB;
+            this.ViewData["description"] = game.Description;
+            this.ViewData["releaseDate"] = string.Format("{0:dd/MM/yyyy}", game.ReleaseDate);
+            this.ViewData["displayAdminBtn"] = "none";
+
+            if (this.User != null && this.User.IsAuthenticated)
+            {
+                if (this.User.IsInRole("Admin"))
+                {
+                    this.ViewData["displayAdminBtn"] = "inline";
+                }
+            }
+
+            return this.FileViewResponse(@"shared\game-details");
+        }
+
+        public IHttpResponse AddToCart(IHttpRequest req, int id)
+        {
+            var shopingCart = req.Session.Get<ShoppingCart>(ShoppingCart.SessionKey);
+
+            if (shopingCart.Games.Any(g => g.Id == id))
+            {
+                return new RedirectResponse("/");
+            }
+
+            var game = this.gameData.GetById(id);
+
+            if (game == null)
+            {
+                return new RedirectResponse("/");
+            }
+
+            var gameInfo = new GameInfo()
+            {
+                Id = game.Id,
+                Title = game.Title,
+                Trailer = game.Trailer,
+                Image = game.Image,
+                SizeGB = game.SizeGB,
+                Price = game.Price,
+                Description = game.Description,
+                ReleaseDate = game.ReleaseDate
+            };
+            shopingCart.Games.Add(gameInfo);
+
+            req.Session.Add(ShoppingCart.SessionKey, shopingCart);
+
+            return new RedirectResponse("/game/cart");
+        }
+
+        public IHttpResponse ShowCart(IHttpRequest req)
+        {
+            var shopingCart = req.Session.Get<ShoppingCart>(ShoppingCart.SessionKey);
+            this.ViewData["totalPrice"] = "0.00";
+            this.ViewData["cartContent"] = "<h1>You have not items in the cart yet!</h1>";
+            if (shopingCart != null && shopingCart.Games.Count > 0)
+            {
+                this.ViewData["cartContent"] = Templates.GenerateGamesInCarts(@"shared/gameCart", shopingCart.Games);
+                this.ViewData["totalPrice"] = shopingCart.Games.Sum(g => g.Price).ToString("F2");
+            }
+
+            return this.FileViewResponse(@"game\cart");
         }
 
         private bool ValidateGameViewModel(AddGameViewModel model)

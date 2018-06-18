@@ -6,6 +6,6 @@
     {
         public const string SessionKey = "%^Current_Shopping_Cart^%";
 
-        public List<Game> Games { get; private set; } = new List<Game>();
+        public List<GameInfo> Games { get; private set; } = new List<GameInfo>();
     }
 }

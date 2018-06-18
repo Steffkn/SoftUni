@@ -9,6 +9,7 @@
         public FileResponse(string path)
         {
             var filePath = string.Format("{0}\\{1}\\{2}", ApplicationSettings.CurrentDirrectory, ApplicationSettings.ProjectName, path);
+            var stringPath = Path.GetFullPath(filePath);
             using (var streamReader = new StreamReader(filePath))
             {
                 this.StatusCode = HttpStatusCode.Ok;
