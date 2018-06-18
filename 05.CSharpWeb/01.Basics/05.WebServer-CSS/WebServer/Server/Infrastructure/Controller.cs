@@ -42,11 +42,11 @@
             {
                 foreach (var value in this.PartialViews)
                 {
-                    var html = File.ReadAllText(string.Format(
+                    var navigationHtml = File.ReadAllText(string.Format(
                        ApplicationSettings.DefaultPath,
                        ApplicationSettings.ProjectName,
                        value.Value));
-                    result = result.Replace($"{{{{{{{value.Key}}}}}}}", html);
+                    result = result.Replace($"{{{{{{{value.Key}}}}}}}", navigationHtml);
                 }
             }
 
