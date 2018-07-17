@@ -1,0 +1,30 @@
+﻿@page "{searchTerm}"
+@model BookLibrary.Web.Pages.SearchModel
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h2>Search results: "@Model.SearchTerm"</h2>
+
+@if (Model.ModelState.ErrorCount != 0)
+{
+    <div>@Html.ValidationMessage("error")</div>
+}
+else
+{
+    <ul>
+        @foreach (var book in Model.Books)
+        {
+            <li>
+                <a asp-page="Books/Details" asp-route-id="@book.Id">
+                    @book.Title
+                </a>
+                <small>(status status)</small>
+            </li>
+        }
+    </ul>
+}
+
+
+
+

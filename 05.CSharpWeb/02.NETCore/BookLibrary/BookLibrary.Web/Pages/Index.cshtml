@@ -1,15 +1,39 @@
-﻿@page
+﻿@page "/"
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "My library";
 }
 
 <div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Sample pages using ASP.NET Core Razor Pages</li>
-            <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
+    <div class="col-12">
+        <h2>@ViewData["Title"]</h2>
+        <a asp-page="/Books/Add" class="btn btn-success btn-lg m-2">Add new book</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var book in Model.Books)
+                {
+                    <tr>
+                        <td>
+                            <a asp-page="Books/Details" asp-route-id="@book.BookId">
+                                @book.Title
+                            </a>
+                        </td>
+                        <td>
+                            <a asp-page="Authors/Details" asp-route-id="@book.AuthorId">
+                                @book.AuthorName
+                            </a>
+                        </td>
+                        <td></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div>

@@ -46,11 +46,16 @@ namespace BookLibrary.Web.Pages.Books
         {
             Author author = CreateOrUpdateAuthor();
 
+            if (this.Title.ToLower().StartsWith("the "))
+            {
+                this.Title = string.Format("{0}, {1}", this.Title.Substring(4), this.Title.Substring(0, 3));
+            }
+
             var book = new Book()
             {
-                Title = this.Title,
-                Description = this.Description,
-                CoverImage = this.ImageUrl,
+                Title = this.Title.Trim(),
+                Description = this.Description.Trim(),
+                CoverImage = this.ImageUrl.Trim(),
                 AuthorId = author.Id
             };
 
@@ -61,7 +66,8 @@ namespace BookLibrary.Web.Pages.Books
 
         private Author CreateOrUpdateAuthor()
         {
-            var author = this.Context.Authors.FirstOrDefault(a => a.Name == this.AuthorName);
+            this.AuthorName = this.AuthorName.Trim();
+            var author = this.Context.Authors.FirstOrDefault(a => a.Name.ToLower() == this.AuthorName.ToLower());
 
             if (author == null)
             {
