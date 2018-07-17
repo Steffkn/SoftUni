@@ -1,0 +1,47 @@
+﻿@page
+@model BookLibrary.Web.Pages.Books.AddModel
+@{
+    ViewData["Title"] = "Add book";
+}
+
+<div class="row">
+    <div class="col-8 offset-2">
+        <h2 class="text-center">@ViewData["Title"]</h2>
+        <form method="post">
+            <div class="form-group row">
+                <label asp-for="Title" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="Title" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Description" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <textarea id="Description" name="Description" class="form-control"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="AuthorName" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="AuthorName" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="ImageUrl" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="ImageUrl" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10 offset-2">
+                    <input type="submit" class="btn btn-success" value="Add book">
+                    <input type="reset" class="btn btn-light" value="Cancel">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
