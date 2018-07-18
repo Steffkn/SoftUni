@@ -1,0 +1,40 @@
+﻿@page "{bookId}"
+@model StatusModel
+@{
+    ViewData["Title"] = $"History '{@Model.BookTitle}'";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h2>
+            <a asp-page="/Books/Details" asp-route-id="@Model.BookId">
+                @Model.BookTitle
+            </a>
+        </h2>
+
+        <h5>
+            by <a asp-page="/Authors/Details" asp-route-id="@Model.AuthorId">
+                @Model.AuthorName
+            </a>
+        </h5>
+        <table class="table  table-striped">
+            <thead>
+                <tr>
+                    <th>Borrower</th>
+                    <th>Start date</th>
+                    <th>End date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var historyEntry in Model.BookHistory)
+                {
+                    <tr>
+                        <td>@historyEntry.BorrowerName</td>
+                        <td>@historyEntry.StartDate.ToString("dd-MM-yyyy")</td>
+                        <td>@(historyEntry.EndDate.HasValue ? historyEntry.EndDate.Value.ToString("dd-MM-yyyy") : "currently borrowed")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

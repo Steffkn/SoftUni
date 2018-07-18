@@ -25,7 +25,11 @@ namespace BookLibrary.Web.Pages.Books
         [BindProperty]
         [Display(Name = "Start date")]
         [DataType(DataType.Date, ErrorMessage = "Invalid date!")]
-        public DateTime StartDate { get; set; }
+        public DateTime StartDate { get; set; } = DateTime.Today;
+
+        public string BookTitle { get; set; }
+
+        public int BookId { get; set; }
 
         [BindProperty]
         [Display(Name = "End date")]
@@ -37,15 +41,50 @@ namespace BookLibrary.Web.Pages.Books
         [Required(ErrorMessage = "Select a borrower or add new one!")]
         public int BorrowerId { get; set; }
 
-        public void OnGet(int bookId)
+        public IActionResult OnGet(int bookId)
         {
-            StartDate = DateTime.Today;
+            var book = this.Context.Books.Find(bookId);
+
+            if (book == null)
+            {
+                return this.RedirectToPage("/Index");
+            }
+
+            this.BookId = bookId;
+            this.BookTitle = book.Title;
+
             GetBorrowers();
+
+            return this.Page();
         }
 
-        public void OnGetReturn(int bookId)
+        public IActionResult OnGetReturn(int bookId)
         {
+            var book = this.Context.Books.Find(bookId);
+            if (book == null)
+            {
+                return this.RedirectToPage("/Index");
+            }
 
+            var borrower = this.Context.Borrowers.Include(b => b.BorrowedBooks).FirstOrDefault(b => b.BorrowedBooks.Any(d => d.BookId == bookId));
+
+            if (borrower != null)
+            {
+                borrower.BorrowedBooks.Remove(borrower.BorrowedBooks.First(a => a.BookId == bookId));
+            }
+
+            book.IsInStock = true;
+
+            var bookHistory = this.Context.BookBorrowsHistory.LastOrDefault(h => h.BookId == bookId);
+
+            if (bookHistory != null)
+            {
+                bookHistory.EndDate = DateTime.Today;
+            }
+
+            this.Context.SaveChanges();
+
+            return this.RedirectToPage("/Index");
         }
 
         public IActionResult OnPost(int bookId)
@@ -54,6 +93,12 @@ namespace BookLibrary.Web.Pages.Books
             {
                 this.GetBorrowers();
                 return this.Page();
+            }
+
+            var book = this.Context.Books.Find(bookId);
+            if (book == null)
+            {
+                return this.RedirectToPage("/Index");
             }
 
             if (EndDate != null && StartDate > EndDate)
@@ -72,8 +117,17 @@ namespace BookLibrary.Web.Pages.Books
 
             borrower.BorrowedBooks.Add(new BorrowersBooks()
             {
-                BookId = bookId,
+                BookId = book.Id,
                 BorrowerId = this.BorrowerId
+            });
+
+            book.IsInStock = false;
+            this.Context.BookBorrowsHistory.Add(new BookBorrowHistory()
+            {
+                BookId = book.Id,
+                StartDate = this.StartDate,
+                EndDate = this.EndDate,
+                BorrowerName = borrower.Name,
             });
 
             this.Context.SaveChanges();

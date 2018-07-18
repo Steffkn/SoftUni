@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace BookLibrary.Models
@@ -23,7 +22,6 @@ namespace BookLibrary.Models
         [Required]
         public string CoverImage { get; set; }
 
-        [DefaultValue(true)]
         public bool IsInStock { get; set; }
 
         public int AuthorId { get; set; }

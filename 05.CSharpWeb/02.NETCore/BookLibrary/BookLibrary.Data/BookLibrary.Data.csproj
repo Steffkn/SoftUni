@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20180718200358_BookHistoryMigration.cs" />
+    <Compile Remove="Migrations\20180718200631_BookHistoryMigration.cs" />
+    <Compile Remove="Migrations\20180718203417_BookHistoryMigration.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.0" />
   </ItemGroup>

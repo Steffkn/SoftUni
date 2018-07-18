@@ -21,16 +21,25 @@
                 {
                     <tr>
                         <td>
-                            <a asp-page="Books/Details" asp-route-id="@book.BookId">
+                            <a asp-page="/Books/Details" asp-route-id="@book.BookId">
                                 @book.Title
                             </a>
                         </td>
                         <td>
-                            <a asp-page="Authors/Details" asp-route-id="@book.AuthorId">
+                            <a asp-page="/Authors/Details" asp-route-id="@book.AuthorId">
                                 @book.AuthorName
                             </a>
                         </td>
-                        <td></td>
+                        <td>
+                            @if (book.IsInStock)
+                            {
+                                <span class="badge badge-success">At home</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-warning">Borrowed</span>
+                            }
+                        </td>
                     </tr>
                 }
             </tbody>

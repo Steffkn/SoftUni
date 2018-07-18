@@ -15,6 +15,7 @@ namespace BookLibrary.Web.Pages.Books
         }
 
         [BindProperty]
+        [Required]
         public string Title { get; set; }
 
         [BindProperty]
@@ -22,9 +23,12 @@ namespace BookLibrary.Web.Pages.Books
         public string Description { get; set; }
 
         [BindProperty]
+        [Required]
+        [Display(Name = "Author name")]
         public string AuthorName { get; set; }
 
         [BindProperty]
+        [Required]
         [Display(Name = "Image URL")]
         [DataType(DataType.ImageUrl)]
         public string ImageUrl { get; set; }
@@ -54,9 +58,10 @@ namespace BookLibrary.Web.Pages.Books
             var book = new Book()
             {
                 Title = this.Title.Trim(),
-                Description = this.Description.Trim(),
+                Description = this.Description?.Trim(),
                 CoverImage = this.ImageUrl.Trim(),
-                AuthorId = author.Id
+                AuthorId = author.Id,
+                IsInStock = true
             };
 
             this.Context.Books.Add(book);

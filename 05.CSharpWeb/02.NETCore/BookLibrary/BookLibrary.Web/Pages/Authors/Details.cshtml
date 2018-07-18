@@ -15,7 +15,14 @@
                     <a asp-page="/Books/Details" asp-route-id="@book.Id">
                         @book.Title
                     </a>
-                    <small>(status status)</small>
+                    @if (book.IsInStock)
+                    {
+                        <span class="badge badge-success">At home</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-warning">Borrowed</span>
+                    }
                 </li>
             }
         </ul>

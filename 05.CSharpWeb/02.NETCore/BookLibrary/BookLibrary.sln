@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Web", "BookLibrary.Web\BookLibrary.Web.csproj", "{591CF120-1BDF-4F40-B4C0-B300E77476D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookLibrary.Web", "BookLibrary.Web\BookLibrary.Web.csproj", "{591CF120-1BDF-4F40-B4C0-B300E77476D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Models", "BookLibrary.Models\BookLibrary.Models.csproj", "{03BFF466-1476-4ECA-8DBC-03F5CF725237}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookLibrary.Models", "BookLibrary.Models\BookLibrary.Models.csproj", "{03BFF466-1476-4ECA-8DBC-03F5CF725237}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Data", "BookLibrary.Data\BookLibrary.Data.csproj", "{EA9F6141-9F0C-41B2-A5EB-98884A5DE57B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookLibrary.Data", "BookLibrary.Data\BookLibrary.Data.csproj", "{EA9F6141-9F0C-41B2-A5EB-98884A5DE57B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

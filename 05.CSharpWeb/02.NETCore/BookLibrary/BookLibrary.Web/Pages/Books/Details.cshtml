@@ -26,5 +26,7 @@
         {
             <a asp-page="/Books/Borrow" asp-page-handler="Return" asp-route-bookId="@Model.BookId" class="btn btn-info">Return</a>
         }
+
+        <a asp-page="/Books/Status" asp-route-bookId="@Model.BookId" class="btn btn-link">Show history</a>
     </div>
 </div>

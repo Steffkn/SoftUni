@@ -1,12 +1,16 @@
 ﻿@page "{bookId}"
 @model BookLibrary.Web.Pages.Books.BorrowModel
 @{
-    ViewData["Title"] = "Borrow 'Some title'";
+    ViewData["Title"] = $"Borrow '{@Model.BookTitle}'";
 }
 
 <div class="row">
     <div class="col-8 offset-2">
-        <h2 class="text-center">@ViewData["Title"]</h2>
+        <h3 class="text-center">
+            <a asp-page="/Books/Details" asp-route-id="@Model.BookId">
+                @ViewData["Title"]
+            </a>
+        </h3>
         <div asp-validation-summary="All" class="unstyle text-danger">
         </div>
         <form method="post">
@@ -35,9 +39,12 @@
             <div class="form-group row">
                 <div class="col-sm-10 offset-2">
                     <input type="submit" class="btn btn-success" value="Borrow">
-                    <input type="reset" class="btn btn-outline-dark" value="Cancel">
+                    <a class="btn btn-outline-dark" asp-page="/Index">Cancel</a>
                 </div>
             </div>
         </form>
     </div>
 </div>
+@section Validation {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookLibrary.Data.Migrations
 {
     [DbContext(typeof(BookLibraryDbContext))]
-    [Migration("20180718120142_InitialMigrationWithValidation")]
-    partial class InitialMigrationWithValidation
+    [Migration("20180718193313_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.0-rtm-30799")
+                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -86,11 +86,9 @@ namespace BookLibrary.Data.Migrations
 
                     b.Property<int>("BorrowerId");
 
-                    b.Property<DateTime?>("EndDate")
-                        .HasColumnType("datetime");
+                    b.Property<DateTime?>("EndDate");
 
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime");
+                    b.Property<DateTime>("StartDate");
 
                     b.HasKey("BookId", "BorrowerId");
 

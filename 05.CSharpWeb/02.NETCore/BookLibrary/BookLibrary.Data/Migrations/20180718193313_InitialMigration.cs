@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookLibrary.Data.Migrations
 {
-    public partial class InitialMigrationWithValidation : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,8 +64,8 @@ namespace BookLibrary.Data.Migrations
                 {
                     BookId = table.Column<int>(nullable: false),
                     BorrowerId = table.Column<int>(nullable: false),
-                    StartDate = table.Column<DateTime>(type: "datetime", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime", nullable: true)
+                    StartDate = table.Column<DateTime>(nullable: false),
+                    EndDate = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {

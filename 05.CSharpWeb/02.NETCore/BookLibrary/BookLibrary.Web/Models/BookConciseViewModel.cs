@@ -1,8 +1,5 @@
 ﻿using BookLibrary.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BookLibrary.Web.Models
 {
@@ -11,6 +8,8 @@ namespace BookLibrary.Web.Models
         public int BookId { get; set; }
 
         public string Title { get; set; }
+
+        public bool IsInStock { get; set; }
 
         public int AuthorId { get; set; }
 
@@ -26,6 +25,7 @@ namespace BookLibrary.Web.Models
                     Title = book.Title,
                     AuthorId = book.AuthorId,
                     AuthorName = book.Author.Name,
+                    IsInStock = book.IsInStock,
                 };
             }
         }
