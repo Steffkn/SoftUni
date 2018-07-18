@@ -9,7 +9,7 @@
         <img src="@Model.ImageUrl" alt="@Model.Title Image" />
     </div>
     <div class="col-9">
-        <h2>@Model.Title</h2>
+        <div class="h2">@Model.Title</div>
         <h5>
             by <a asp-page="/Authors/Details" asp-route-id="@Model.AuthorId">
                 @Model.AuthorName
@@ -18,5 +18,13 @@
         <p>
             @Model.Description
         </p>
+        @if (Model.IsInStock)
+        {
+            <a asp-page="/Books/Borrow" asp-route-bookId="@Model.BookId" class="btn btn-info">Borrow</a>
+        }
+        else
+        {
+            <a asp-page="/Books/Borrow" asp-page-handler="Return" asp-route-bookId="@Model.BookId" class="btn btn-info">Return</a>
+        }
     </div>
 </div>

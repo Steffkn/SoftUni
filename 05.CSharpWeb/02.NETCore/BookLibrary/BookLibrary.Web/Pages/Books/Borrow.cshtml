@@ -1,0 +1,43 @@
+﻿@page "{bookId}"
+@model BookLibrary.Web.Pages.Books.BorrowModel
+@{
+    ViewData["Title"] = "Borrow 'Some title'";
+}
+
+<div class="row">
+    <div class="col-8 offset-2">
+        <h2 class="text-center">@ViewData["Title"]</h2>
+        <div asp-validation-summary="All" class="unstyle text-danger">
+        </div>
+        <form method="post">
+            <div class="form-group row">
+                <label asp-for="BorrowerId" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <select asp-for="BorrowerId" asp-items="Model.Borrowers" class="form-control"></select>
+                    <span asp-validation-for="BorrowerId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="StartDate" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="StartDate" class="form-control">
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="EndDate" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="EndDate" class="form-control">
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10 offset-2">
+                    <input type="submit" class="btn btn-success" value="Borrow">
+                    <input type="reset" class="btn btn-outline-dark" value="Cancel">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

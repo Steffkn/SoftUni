@@ -1,4 +1,7 @@
-﻿namespace BookLibrary.Models
+﻿using System;
+using System.ComponentModel;
+
+namespace BookLibrary.Models
 {
     public class BorrowersBooks
     {
@@ -9,5 +12,9 @@
         public int BorrowerId { get; set; }
 
         public Borrower Borrower { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public DateTime? EndDate { get; set; }
     }
 }

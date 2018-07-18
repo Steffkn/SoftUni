@@ -1,5 +1,7 @@
 ﻿using BookLibrary.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 
 namespace BookLibrary.Data
 {
@@ -21,6 +23,13 @@ namespace BookLibrary.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            foreach (var property in modelBuilder.Model.GetEntityTypes()
+                    .SelectMany(t => t.GetProperties())
+                    .Where(p => p.ClrType == typeof(DateTime) || p.ClrType == typeof(DateTime?)))
+            {
+                property.Relational().ColumnType = "datetime";
+            }
+
             modelBuilder.Entity<Book>()
                 .HasMany(book => book.Borrowers)
                 .WithOne(b => b.Book)

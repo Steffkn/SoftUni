@@ -13,6 +13,8 @@ namespace BookLibrary.Web.Pages.Books
             this.Context = context;
         }
 
+        public int BookId { get; set; }
+
         public string Title { get; set; }
 
         public string Description { get; set; }
@@ -22,6 +24,8 @@ namespace BookLibrary.Web.Pages.Books
         public int AuthorId { get; set; }
 
         public string ImageUrl { get; set; }
+
+        public bool IsInStock { get; set; }
 
         public BookLibraryDbContext Context { get; }
 
@@ -36,11 +40,13 @@ namespace BookLibrary.Web.Pages.Books
                 return this.RedirectToPage("/Index");
             }
 
+            this.BookId = book.Id;
             this.Title = book.Title;
             this.Description = book.Description;
             this.AuthorName = book.Author.Name;
             this.AuthorId = book.Author.Id;
             this.ImageUrl = book.CoverImage;
+            this.IsInStock = book.IsInStock;
 
             return this.Page();
         }

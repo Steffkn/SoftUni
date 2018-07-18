@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookLibrary.Data.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialMigrationWithValidation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +14,7 @@ namespace BookLibrary.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,8 +27,8 @@ namespace BookLibrary.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(maxLength: 100, nullable: true),
+                    Address = table.Column<string>(maxLength: 500, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -40,9 +41,10 @@ namespace BookLibrary.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    CoverImage = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(maxLength: 100, nullable: false),
+                    Description = table.Column<string>(maxLength: 2000, nullable: true),
+                    CoverImage = table.Column<string>(nullable: false),
+                    IsInStock = table.Column<bool>(nullable: false),
                     AuthorId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -61,7 +63,9 @@ namespace BookLibrary.Data.Migrations
                 columns: table => new
                 {
                     BookId = table.Column<int>(nullable: false),
-                    BorrowerId = table.Column<int>(nullable: false)
+                    BorrowerId = table.Column<int>(nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {

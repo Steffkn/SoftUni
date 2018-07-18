@@ -18,11 +18,11 @@ else
         {
             <li>
                 <a asp-page="Books/Details" asp-route-id="@book.Id">
-                    @Html.Raw(book.Title.SurroundWithTag(Model.SearchTerm, "b", new { @class = "text-danger" }))
+                    @Html.Raw(book.Title.SurroundWithTag(Model.SearchTerm, "strong", new { @class = "text-danger" }))
                 </a>
                 by
                 <a asp-page="Authors/Details" asp-route-id="@book.AuthorId">
-                    @Html.Raw(book.Author.Name.SurroundWithTag(Model.SearchTerm, "b", new { @class = "text-danger" }))
+                    @Html.Raw(book.Author.Name.SurroundWithTag(Model.SearchTerm, "strong", new { @class = "text-danger" }))
                 </a>
                 <small>(status status)</small>
             </li>
