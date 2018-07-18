@@ -19,6 +19,8 @@ namespace BookLibrary.Web.Pages.Books
 
         public string AuthorName { get; set; }
 
+        public int AuthorId { get; set; }
+
         public string ImageUrl { get; set; }
 
         public BookLibraryDbContext Context { get; }
@@ -31,12 +33,13 @@ namespace BookLibrary.Web.Pages.Books
 
             if (book == null)
             {
-                return this.NotFound();
+                return this.RedirectToPage("/Index");
             }
 
             this.Title = book.Title;
             this.Description = book.Description;
             this.AuthorName = book.Author.Name;
+            this.AuthorId = book.Author.Id;
             this.ImageUrl = book.CoverImage;
 
             return this.Page();

@@ -1,5 +1,6 @@
 ﻿@page "{searchTerm}"
 @model BookLibrary.Web.Pages.SearchModel
+@using BookLibrary.Web.Extensions
 @{
     ViewData["Title"] = "Search";
 }
@@ -12,17 +13,21 @@
 }
 else
 {
-    <ul>
+    <ol>
         @foreach (var book in Model.Books)
         {
             <li>
                 <a asp-page="Books/Details" asp-route-id="@book.Id">
-                    @book.Title
+                    @Html.Raw(book.Title.SurroundWithTag(Model.SearchTerm, "b", new { @class = "text-danger" }))
+                </a>
+                by
+                <a asp-page="Authors/Details" asp-route-id="@book.AuthorId">
+                    @Html.Raw(book.Author.Name.SurroundWithTag(Model.SearchTerm, "b", new { @class = "text-danger" }))
                 </a>
                 <small>(status status)</small>
             </li>
         }
-    </ul>
+    </ol>
 }
 
 

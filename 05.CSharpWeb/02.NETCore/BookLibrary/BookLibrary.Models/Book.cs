@@ -22,5 +22,10 @@ namespace BookLibrary.Models
         public Author Author { get; set; }
 
         public ICollection<BorrowersBooks> Borrowers { get; set; }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
     }
 }

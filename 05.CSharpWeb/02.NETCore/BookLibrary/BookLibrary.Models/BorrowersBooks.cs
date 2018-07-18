@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BookLibrary.Models
+﻿namespace BookLibrary.Models
 {
     public class BorrowersBooks
     {

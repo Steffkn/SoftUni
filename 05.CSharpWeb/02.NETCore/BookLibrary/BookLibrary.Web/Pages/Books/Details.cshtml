@@ -1,7 +1,7 @@
 ﻿@page "{id}"
 @model BookLibrary.Web.Pages.Books.DetailsModel
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Model.Title;
 }
 
 <div class="row">
@@ -10,7 +10,13 @@
     </div>
     <div class="col-9">
         <h2>@Model.Title</h2>
-        <h5>by @Model.AuthorName</h5>
-        <p>@Model.Description</p>
+        <h5>
+            by <a asp-page="/Authors/Details" asp-route-id="@Model.AuthorId">
+                @Model.AuthorName
+            </a>
+        </h5>
+        <p>
+            @Model.Description
+        </p>
     </div>
 </div>

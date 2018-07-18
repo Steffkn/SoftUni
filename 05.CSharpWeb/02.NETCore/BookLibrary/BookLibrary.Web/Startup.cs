@@ -33,7 +33,12 @@ namespace BookLibrary.Web
             });
 
             services.AddDbContext<BookLibraryDbContext>();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.AddPageRoute("/Search", "{text?}");
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

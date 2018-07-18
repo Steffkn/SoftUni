@@ -1,7 +1,7 @@
 ﻿@page
 @model BookLibrary.Web.Pages.Authors.DetailsModel
 @{
-    ViewData["Title"] = "Author details";
+    ViewData["Title"] = Model.AuthorName;
 }
 
 <div class="row">
@@ -12,7 +12,7 @@
             @foreach (var book in Model.Books)
             {
                 <li>
-                    <a asp-page="Books/Details" asp-route-id="@book.Id">
+                    <a asp-page="/Books/Details" asp-route-id="@book.Id">
                         @book.Title
                     </a>
                     <small>(status status)</small>
