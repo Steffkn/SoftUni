@@ -33,6 +33,9 @@
                     <a class="nav-link" asp-page="/Books/Add">Add book</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" asp-controller="Movies" asp-action="Add">Add movie</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" asp-page="/Borrowers/Add">Add borrowers</a>
                 </li>
             </ul>
@@ -52,7 +55,7 @@
 
     <partial name="_CookieConsentPartial" />
 
-    <div class="container-fluid p-10">
+    <div class="container">
         @RenderBody()
         <footer class="border-top p-4 mt-4">
             <p>&copy; 2018 - My BookLibrary</p>

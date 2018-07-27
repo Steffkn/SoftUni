@@ -26,14 +26,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var historyEntry in Model.BookHistory)
-                {
-                    <tr>
-                        <td>@historyEntry.BorrowerName</td>
-                        <td>@historyEntry.StartDate.ToString("dd-MM-yyyy")</td>
-                        <td>@(historyEntry.EndDate.HasValue ? historyEntry.EndDate.Value.ToString("dd-MM-yyyy") : "currently borrowed")</td>
-                    </tr>
-                }
+                @Html.DisplayFor(model => model.BookHistory)
             </tbody>
         </table>
     </div>

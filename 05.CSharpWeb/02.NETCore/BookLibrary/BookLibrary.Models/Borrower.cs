@@ -8,6 +8,7 @@ namespace BookLibrary.Models
         public Borrower()
         {
             this.BorrowedBooks = new HashSet<BorrowersBooks>();
+            this.BorrowedMovies = new HashSet<BorrowersMovies>();
         }
 
         [Key]
@@ -20,5 +21,7 @@ namespace BookLibrary.Models
         public string Address { get; set; }
 
         public ICollection<BorrowersBooks> BorrowedBooks { get; set; }
+
+        public ICollection<BorrowersMovies> BorrowedMovies { get; set; }
     }
 }

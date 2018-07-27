@@ -22,6 +22,8 @@ namespace BookLibrary.Web.Pages.Authors
 
         public IEnumerable<Book> Books { get; set; }
 
+        public IEnumerable<Movie> Movies { get; set; }
+
         public string AuthorName { get; set; }
 
         public IActionResult OnGet(int id)
@@ -31,9 +33,20 @@ namespace BookLibrary.Web.Pages.Authors
                 .Where(b => b.AuthorId == id)
                 .ToList();
 
+            this.Movies = this.Context.Movies
+                .Include(b => b.Author)
+                .Where(b => b.AuthorId == id)
+                .ToList();
+
             if (Books.Any())
             {
                 this.AuthorName = Books.First().Author.Name;
+                return this.Page();
+            }
+
+            if (Movies.Any())
+            {
+                this.AuthorName = Movies.First().Author.Name;
                 return this.Page();
             }
 

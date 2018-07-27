@@ -21,6 +21,8 @@ namespace BookLibrary.Web.Pages
 
         public IEnumerable<Book> Books { get; set; }
 
+        public IEnumerable<Movie> Movies { get; set; }
+
         public string SearchTerm { get; set; }
 
         public void OnGet(string searchTerm)
@@ -32,7 +34,13 @@ namespace BookLibrary.Web.Pages
                         || b.Author.Name.Contains(this.SearchTerm, StringComparison.CurrentCultureIgnoreCase))
                .ToList();
 
-            if (!Books.Any())
+            this.Movies = this.Context.Movies
+               .Include(b => b.Author)
+               .Where(b => b.Title.Contains(this.SearchTerm, StringComparison.CurrentCultureIgnoreCase)
+                        || b.Author.Name.Contains(this.SearchTerm, StringComparison.CurrentCultureIgnoreCase))
+               .ToList();
+
+            if (!Books.Any() && !Movies.Any())
             {
                 this.ModelState.AddModelError("error", $"No results found for: '{this.SearchTerm}'");
             }

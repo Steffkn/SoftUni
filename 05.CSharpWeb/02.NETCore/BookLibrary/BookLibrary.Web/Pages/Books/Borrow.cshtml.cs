@@ -137,7 +137,8 @@ namespace BookLibrary.Web.Pages.Books
 
         private void GetBorrowers()
         {
-            var borrowersQuery = this.Context.Borrowers.Select(b => new SelectListItem() { Text = b.Name, Value = b.Id.ToString() });
+            var borrowersQuery = this.Context.Borrowers
+                .Select(b => new SelectListItem() { Text = b.Name, Value = b.Id.ToString() });
             this.Borrowers = borrowersQuery.ToList();
         }
     }

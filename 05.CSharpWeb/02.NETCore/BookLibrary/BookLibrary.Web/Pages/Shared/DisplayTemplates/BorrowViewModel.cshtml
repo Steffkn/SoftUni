@@ -1,0 +1,7 @@
+﻿@model BookLibrary.Web.Models.BorrowViewModel
+
+<tr>
+    <td>@Model.BorrowerName</td>
+    <td>@Model.StartDate.ToString("dd-MM-yyyy")</td>
+    <td>@(Model.EndDate.HasValue ? Model.EndDate.Value.ToString("dd-MM-yyyy") : "currently borrowed")</td>
+</tr>

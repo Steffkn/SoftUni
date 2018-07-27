@@ -18,11 +18,18 @@ namespace BookLibrary.Web.Pages
 
         public IEnumerable<BookConciseViewModel> Books { get; private set; }
 
+        public IEnumerable<MovieConciseViewModel> Movies { get; private set; }
+
         public void OnGet()
         {
             this.Books = this.Context.Books.OrderBy(b => b.Title)
                 .Include(b => b.Author)
                 .Select(BookConciseViewModel.FromBook)
+                .ToList();
+
+            this.Movies = this.Context.Movies.OrderBy(b => b.Title)
+                .Include(b => b.Author)
+                .Select(MovieConciseViewModel.FromMovie)
                 .ToList();
         }
     }

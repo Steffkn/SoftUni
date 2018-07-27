@@ -10,11 +10,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\Shared\EditorTemplates\" />
     <Folder Include="wwwroot\lib\popper\dist\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BookLibrary.Data\BookLibrary.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Pages\Shared\DisplayTemplates\MovieConciseViewModel.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
 </Project>

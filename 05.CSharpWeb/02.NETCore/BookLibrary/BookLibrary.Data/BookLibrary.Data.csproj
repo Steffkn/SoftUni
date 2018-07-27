@@ -8,6 +8,7 @@
     <Compile Remove="Migrations\20180718200358_BookHistoryMigration.cs" />
     <Compile Remove="Migrations\20180718200631_BookHistoryMigration.cs" />
     <Compile Remove="Migrations\20180718203417_BookHistoryMigration.cs" />
+    <Compile Remove="Migrations\20180723190921_movies.cs" />
   </ItemGroup>
 
   <ItemGroup>

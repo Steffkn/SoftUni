@@ -1,0 +1,24 @@
+﻿@model BookLibrary.Web.Models.BookConciseViewModel
+
+<tr>
+    <td>
+        <a asp-page="/Books/Details" asp-route-id="@Model.BookId">
+            @Model.Title
+        </a>
+    </td>
+    <td>
+        <a asp-page="/Authors/Details" asp-route-id="@Model.AuthorId">
+            @Model.AuthorName
+        </a>
+    </td>
+    <td>
+        @if (Model.IsInStock)
+        {
+            <span class="badge badge-success">At home</span>
+        }
+        else
+        {
+            <span class="badge badge-warning">Borrowed</span>
+        }
+    </td>
+</tr>

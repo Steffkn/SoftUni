@@ -33,6 +33,7 @@ namespace BookLibrary.Web
             });
 
             services.AddDbContext<BookLibraryDbContext>();
+
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddRazorPagesOptions(options =>
@@ -58,7 +59,7 @@ namespace BookLibrary.Web
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseMvc();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

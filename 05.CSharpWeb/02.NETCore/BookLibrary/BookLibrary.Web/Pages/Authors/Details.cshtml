@@ -4,28 +4,70 @@
     ViewData["Title"] = Model.AuthorName;
 }
 
-<div class="row">
-    <div class="col-12">
-        <h2>@Model.AuthorName</h2>
+@if (Model.Books.Any())
+{
+    <div class="row">
+        <div class="col-12">
+            <h2>@Model.AuthorName - Books</h2>
 
-        <ul>
-            @foreach (var book in Model.Books)
-            {
-                <li>
-                    <a asp-page="/Books/Details" asp-route-id="@book.Id">
-                        @book.Title
-                    </a>
-                    @if (book.IsInStock)
-                    {
-                        <span class="badge badge-success">At home</span>
-                    }
-                    else
-                    {
-                        <span class="badge badge-warning">Borrowed</span>
-                    }
-                </li>
-            }
-        </ul>
+            <ul>
+                @foreach (var book in Model.Books)
+                {
+                    <li>
+                        <a asp-page="/Books/Details" asp-route-id="@book.Id">
+                            @book.Title
+                        </a>
+                        @if (book.IsInStock)
+                        {
+                            <span class="badge badge-success">At home</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-warning">Borrowed</span>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
     </div>
-</div>
+}
+else
+{
+    <div class="alert alert-warning">
+        <span>No books found</span>
+    </div>
+}
 
+@if (Model.Movies.Any())
+{
+    <div class="row">
+        <div class="col-12">
+            <h2>@Model.AuthorName - Movies</h2>
+
+            <ul>
+                @foreach (var movie in Model.Movies)
+                {
+                    <li>
+                        <a asp-controller="Movies" asp-action="Details" asp-route-id="@movie.Id">
+                            @movie.Title
+                        </a>
+                        @if (movie.IsInStock)
+                        {
+                            <span class="badge badge-success">At home</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-warning">Borrowed</span>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        <span>No movies found</span>
+    </div>
+}

@@ -6,42 +6,37 @@
 
 <div class="row">
     <div class="col-12">
-        <h2>@ViewData["Title"]</h2>
+        <h2>Books</h2>
         <a asp-page="/Books/Add" class="btn btn-success btn-lg m-2">Add new book</a>
+        <a asp-controller="/Movies" asp-action="Add" class="btn btn-success btn-lg m-2">Add new movie</a>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Title</th>
-                    <th>Author</th>
-                    <th>Status</th>
+                    <th class="w-25">Author</th>
+                    <th class="w-25">Status</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var book in Model.Books)
-                {
-                    <tr>
-                        <td>
-                            <a asp-page="/Books/Details" asp-route-id="@book.BookId">
-                                @book.Title
-                            </a>
-                        </td>
-                        <td>
-                            <a asp-page="/Authors/Details" asp-route-id="@book.AuthorId">
-                                @book.AuthorName
-                            </a>
-                        </td>
-                        <td>
-                            @if (book.IsInStock)
-                            {
-                                <span class="badge badge-success">At home</span>
-                            }
-                            else
-                            {
-                                <span class="badge badge-warning">Borrowed</span>
-                            }
-                        </td>
-                    </tr>
-                }
+                @Html.DisplayFor(model => model.Books)
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <h2>Movies</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th class="w-25">Producer</th>
+                    <th class="w-25">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @Html.DisplayFor(model => model.Movies)
             </tbody>
         </table>
     </div>

@@ -1,5 +1,7 @@
 ﻿using BookLibrary.Models;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookLibrary.Web.Models
 {
@@ -25,6 +27,21 @@ namespace BookLibrary.Web.Models
                     EndDate = book.EndDate
                 };
             }
+        }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            var results = new List<ValidationResult>();
+
+            Validator.TryValidateProperty(this.StartDate,
+                new ValidationContext(this, null, null) { MemberName = "StartDate" },
+                results);
+
+            Validator.TryValidateProperty(this.EndDate,
+                new ValidationContext(this, null, null) { MemberName = "EndDate" },
+                results);
+
+            return results;
         }
     }
 }

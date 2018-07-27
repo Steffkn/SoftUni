@@ -1,0 +1,29 @@
+﻿@model BookLibrary.Web.Models.MovieViewModel
+@{
+}
+
+<div class="row">
+    <div class="col-sm-6">
+        <iframe width="420" height="345" src="http://www.youtube.com/embed/@(Model.YoutubeIdURL)?autoplay=1" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="col-sm-6">
+        <div class="h2">@Model.Title</div>
+        <h5>
+            by <a asp-page="/Authors/Details" asp-route-id="@Model.AuthorId">
+                @Model.AuthorName
+            </a>
+        </h5>
+        <p>
+            @Model.Description
+        </p>
+        @if (Model.IsInStock)
+        {
+            <a asp-controller="Movies" asp-action="Borrow" asp-route-id="@Model.MovieId" class="btn btn-info">Borrow</a>
+        }
+        else
+        {
+            <a asp-controller="Movies" asp-action="Return" asp-route-id="@Model.MovieId" class="btn btn-info">Return</a>
+        }
+
+    </div>
+</div>

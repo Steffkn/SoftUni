@@ -5,10 +5,10 @@
 }
 
 <div class="row">
-    <div class="col-3">
+    <div class="col-sm-4">
         <img src="@Model.ImageUrl" alt="@Model.Title Image" />
     </div>
-    <div class="col-9">
+    <div class="col-sm-8">
         <div class="h2">@Model.Title</div>
         <h5>
             by <a asp-page="/Authors/Details" asp-route-id="@Model.AuthorId">

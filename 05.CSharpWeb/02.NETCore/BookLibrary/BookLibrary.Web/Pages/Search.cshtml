@@ -13,21 +13,44 @@
 }
 else
 {
-    <ol>
-        @foreach (var book in Model.Books)
-        {
-            <li>
-                <a asp-page="Books/Details" asp-route-id="@book.Id">
-                    @Html.Raw(book.Title.SurroundWithTag(Model.SearchTerm, "strong", new { @class = "text-danger" }))
-                </a>
-                by
-                <a asp-page="Authors/Details" asp-route-id="@book.AuthorId">
-                    @Html.Raw(book.Author.Name.SurroundWithTag(Model.SearchTerm, "strong", new { @class = "text-danger" }))
-                </a>
-                <small>(status status)</small>
-            </li>
-        }
-    </ol>
+    @if (Model.Books.Any())
+    {
+        <h4>Found books</h4>
+        <ol>
+            @foreach (var book in Model.Books)
+            {
+                <li>
+                    <a asp-page="Books/Details" asp-route-id="@book.Id">
+                        @Html.Raw(book.Title.SurroundWithTag(Model.SearchTerm, "strong", new { @class = "text-danger" }))
+                    </a>
+                    by
+                    <a asp-page="Authors/Details" asp-route-id="@book.AuthorId">
+                        @Html.Raw(book.Author.Name.SurroundWithTag(Model.SearchTerm, "strong", new { @class = "text-danger" }))
+                    </a>
+                    <small>@book.IsInStock (status status)</small>
+                </li>
+            }
+        </ol>
+    }
+    @if (Model.Movies.Any())
+    {
+        <h4>Found movies</h4>
+        <ol>
+            @foreach (var movies in Model.Movies)
+            {
+                <li>
+                    <a asp-controller="Movies" asp-action="Details" asp-route-id="@movies.Id">
+                        @Html.Raw(movies.Title.SurroundWithTag(Model.SearchTerm, "strong", new { @class = "text-danger" }))
+                    </a>
+                    by
+                    <a asp-page="Authors/Details" asp-route-id="@movies.AuthorId">
+                        @Html.Raw(movies.Author.Name.SurroundWithTag(Model.SearchTerm, "strong", new { @class = "text-danger" }))
+                    </a>
+                    <small>@movies.IsInStock (status status)</small>
+                </li>
+            }
+        </ol>
+    }
 }
 
 
