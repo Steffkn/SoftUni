@@ -3,7 +3,7 @@
 USE Diablo
 GO
 
-SELECT TOP(50) [Name], CONVERT(varchar, [Start], 23) FROM Games
+SELECT TOP(50) [Name], FORMAT([Start], 'yyyy-MM-dd') FROM Games
 WHERE Year([Start]) BETWEEN 2011 AND 2012
 ORDER BY [Start]
 
