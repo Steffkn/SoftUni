@@ -93,3 +93,10 @@ SELECT [Name] FROM Departments
 ORDER BY [Name];
 SELECT FirstName, LastName, JobTitle, Salary FROM Employees
 ORDER BY Salary DESC;
+
+-- 22 
+UPDATE Employees
+SET Salary += Salary * 0.10
+
+SELECT Salary FROM Employees
+
