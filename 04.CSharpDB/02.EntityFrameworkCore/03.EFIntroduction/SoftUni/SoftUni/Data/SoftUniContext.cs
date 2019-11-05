@@ -5,7 +5,7 @@
 
     public partial class SoftUniContext : DbContext
     {
-        private const string ConnectionString = @"Server=.\SQLEXPRESS;Database=SoftUni;Integrated Security=True;";
+        private const string ConnectionString = @"Server=(localdb)\MSSQLlocalDB;Database=SoftUni;Integrated Security=True;";
         
         public SoftUniContext()
         {
