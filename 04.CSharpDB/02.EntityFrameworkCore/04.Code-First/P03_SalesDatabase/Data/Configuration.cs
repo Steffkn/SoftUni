@@ -1,4 +1,8 @@
-﻿namespace P01_HospitalDatabase.Data
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace P03_SalesDatabase.Data
 {
     static class Configuration
     {
