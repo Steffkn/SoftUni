@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace P01_HospitalDatabase.Data.Models
+﻿namespace P01_HospitalDatabase.Data.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class Diagnose
     {
         public int DiagnoseId { get; set; }

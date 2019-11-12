@@ -10,7 +10,7 @@ using P01_HospitalDatabase.Data;
 namespace P01_HospitalDatabase.Migrations
 {
     [DbContext(typeof(HospitalContext))]
-    [Migration("20191108060509_InitialMigration")]
+    [Migration("20191108082944_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,10 +28,12 @@ namespace P01_HospitalDatabase.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Comments")
-                        .HasMaxLength(250);
+                        .HasMaxLength(250)
+                        .IsUnicode(true);
 
                     b.Property<string>("Name")
-                        .HasMaxLength(50);
+                        .HasMaxLength(50)
+                        .IsUnicode(true);
 
                     b.Property<int>("PatientId");
 
@@ -49,7 +51,8 @@ namespace P01_HospitalDatabase.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .HasMaxLength(50);
+                        .HasMaxLength(50)
+                        .IsUnicode(true);
 
                     b.HasKey("MedicamentId");
 
@@ -63,18 +66,21 @@ namespace P01_HospitalDatabase.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
-                        .HasMaxLength(250);
+                        .HasMaxLength(250)
+                        .IsUnicode(true);
 
                     b.Property<string>("Email")
                         .HasMaxLength(80);
 
                     b.Property<string>("FirstName")
-                        .HasMaxLength(50);
+                        .HasMaxLength(50)
+                        .IsUnicode(true);
 
                     b.Property<bool>("HasInsurance");
 
                     b.Property<string>("LastName")
-                        .HasMaxLength(50);
+                        .HasMaxLength(50)
+                        .IsUnicode(true);
 
                     b.HasKey("PatientId");
 
@@ -91,7 +97,7 @@ namespace P01_HospitalDatabase.Migrations
 
                     b.HasIndex("MedicamentId");
 
-                    b.ToTable("PatientsMedicaments");
+                    b.ToTable("Prescriptions");
                 });
 
             modelBuilder.Entity("P01_HospitalDatabase.Data.Models.Visitation", b =>
@@ -101,7 +107,9 @@ namespace P01_HospitalDatabase.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Comments")
-                        .HasMaxLength(250);
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .IsUnicode(true);
 
                     b.Property<DateTime>("Date");
 
@@ -125,12 +133,12 @@ namespace P01_HospitalDatabase.Migrations
             modelBuilder.Entity("P01_HospitalDatabase.Data.Models.PatientMedicament", b =>
                 {
                     b.HasOne("P01_HospitalDatabase.Data.Models.Medicament", "Medicament")
-                        .WithMany()
+                        .WithMany("Prescriptions")
                         .HasForeignKey("MedicamentId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("P01_HospitalDatabase.Data.Models.Patient", "Patient")
-                        .WithMany()
+                        .WithMany("Prescriptions")
                         .HasForeignKey("PatientId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
