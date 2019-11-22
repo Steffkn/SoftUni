@@ -1,0 +1,22 @@
+﻿@model FastFood.Web.ViewModels.Positions.CreatePositionInputModel
+@{
+    ViewData["Title"] = "Create Position";
+}
+<h1 class="text-center">Create Position</h1>
+<hr class="bg-secondary half-width" />
+<form class="mx-auto half-width" asp-controller="Positions" asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="PositionName"></label>
+        <input type="text" class="form-control" placeholder="Position Name..." asp-for="PositionName">
+        <span asp-validation-for="PositionName" class="text-danger"></span>
+    </div>
+    <hr class="bg-secondary half-width" />
+    <div class="button-holder d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-controller="Positions" asp-action="All" class="btn btn-default">All positions</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
