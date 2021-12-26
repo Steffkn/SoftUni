@@ -10,6 +10,7 @@ namespace BookLibrary.Data
         public DbSet<Author> Authors { get; set; }
         public DbSet<Borrower> Borrowers { get; set; }
         public DbSet<BookBorrowHistory> BookBorrowsHistory { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -52,6 +53,9 @@ namespace BookLibrary.Data
                 .HasKey(bb => new { bb.BookId, bb.BorrowerId });
             modelBuilder.Entity<BorrowersMovies>()
                 .HasKey(bb => new { bb.MovieId, bb.BorrowerId });
+
+            modelBuilder.Entity<User>()
+                .HasAlternateKey(u => u.Username);
 
             base.OnModelCreating(modelBuilder);
         }

@@ -8,13 +8,17 @@ public class Truck : Vehical
 
     public override void Refuel(double liters)
     {
-        if (this.FuelQuantity + liters > this.TankCapacity)
+        if (liters <= 0)
+        {
+            Console.WriteLine("Fuel must be a positive number");
+        }
+        else if (this.FuelQuantity + liters > this.TankCapacity)
         {
             Console.WriteLine($"Cannot fit {liters} fuel in the tank");
         }
         else
         {
-            base.Refuel(liters * 0.95);
+            this.FuelQuantity += liters * 0.95;
         }
     }
 }

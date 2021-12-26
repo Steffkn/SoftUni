@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using BookLibrary.Data;
+using BookLibrary.Web.Filter;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -10,6 +13,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace BookLibrary.Web
 {
@@ -33,13 +37,29 @@ namespace BookLibrary.Web
             });
 
             services.AddDbContext<BookLibraryDbContext>();
+            services.AddSingleton(typeof(Stopwatch));
 
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddRazorPagesOptions(options =>
+            services.AddMvc(options =>
+            {
+                options.Filters.Add<LoggingFilter>();
+                options.Filters.Add<ExceptionFilter>();
+                options.Filters.Add<ExceptionFilter>();
+            })
+            .AddSessionStateTempDataProvider()
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+            .AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AddPageRoute("/Search", "{text?}");
+            });
+
+            services
+                .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
                 {
-                    options.Conventions.AddPageRoute("/Search", "{text?}");
+                    options.LoginPath = "/Users/Login";
                 });
+
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +79,8 @@ namespace BookLibrary.Web
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseAuthentication();
+            app.UseSession();
             app.UseMvcWithDefaultRoute();
         }
     }

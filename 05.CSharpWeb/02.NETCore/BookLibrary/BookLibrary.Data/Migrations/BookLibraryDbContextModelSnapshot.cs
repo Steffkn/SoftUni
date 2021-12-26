@@ -160,6 +160,25 @@ namespace BookLibrary.Data.Migrations
                     b.ToTable("Movies");
                 });
 
+            modelBuilder.Entity("BookLibrary.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired();
+
+                    b.Property<string>("Username")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasAlternateKey("Username");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("BookLibrary.Models.Book", b =>
                 {
                     b.HasOne("BookLibrary.Models.Author", "Author")

@@ -2,11 +2,13 @@
 using System.Linq;
 using BookLibrary.Data;
 using BookLibrary.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BookLibrary.Web.Pages.Borrowers
 {
+    [Authorize]
     public class AddModel : PageModel
     {
         public AddModel(BookLibraryDbContext context)

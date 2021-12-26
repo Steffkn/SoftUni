@@ -130,7 +130,7 @@
                 this.DisplayError("You have empty fields");
                 return this.FileViewResponse(@"account\login");
             }
-
+                
             using (this.Context)
             {
                 var dbUser = this.Context.Users.FirstOrDefault(user => user.Username == name);

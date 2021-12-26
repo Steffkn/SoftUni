@@ -1,7 +1,9 @@
 ﻿using BookLibrary.Data;
 using BookLibrary.Models;
+using BookLibrary.Web.Filter;
 using BookLibrary.Web.Models;
 using BookLibrary.Web.Models.BindingModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +21,7 @@ namespace BookLibrary.Web.Controllers
         public BookLibraryDbContext Context { get; private set; }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Add()
         {
             return this.View();
@@ -26,6 +29,7 @@ namespace BookLibrary.Web.Controllers
 
 
         [HttpPost]
+        [Authorize]
         public IActionResult Add(MovieBindingModel model)
         {
             if (!ModelState.IsValid)
@@ -52,23 +56,6 @@ namespace BookLibrary.Web.Controllers
             this.Context.Movies.Add(movies);
             this.Context.SaveChanges();
             return this.RedirectToPage("/Index");
-        }
-
-        private Author CreateOrUpdateAuthor(string authorName)
-        {
-            var author = this.Context.Authors.FirstOrDefault(a => a.Name.ToLower() == authorName.ToLower());
-
-            if (author == null)
-            {
-                author = new Author()
-                {
-                    Name = authorName
-                };
-
-                this.Context.Authors.Add(author);
-            }
-
-            return author;
         }
 
         [HttpGet]
@@ -98,6 +85,7 @@ namespace BookLibrary.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Return(int id)
         {
             var movie = this.Context.Movies.Find(id);
@@ -125,6 +113,7 @@ namespace BookLibrary.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Borrow(int id)
         {
             var movie = this.Context.Movies.Find(id);
@@ -146,6 +135,7 @@ namespace BookLibrary.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Borrow(MovieBorrowViewModel model)
         {
             if (!ModelState.IsValid)
@@ -194,6 +184,23 @@ namespace BookLibrary.Web.Controllers
             var borrowersQuery = this.Context.Borrowers
                 .Select(b => new SelectListItem() { Text = b.Name, Value = b.Id.ToString() });
             return borrowersQuery;
+        }
+
+        private Author CreateOrUpdateAuthor(string authorName)
+        {
+            var author = this.Context.Authors.FirstOrDefault(a => a.Name.ToLower() == authorName.ToLower());
+
+            if (author == null)
+            {
+                author = new Author()
+                {
+                    Name = authorName
+                };
+
+                this.Context.Authors.Add(author);
+            }
+
+            return author;
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using BookLibrary.Data;
 using BookLibrary.Models;
+using BookLibrary.Web.Filter;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
@@ -7,6 +9,7 @@ using System.Linq;
 
 namespace BookLibrary.Web.Pages.Books
 {
+    [Authorize]
     public class AddModel : PageModel
     {
         public AddModel(BookLibraryDbContext context)

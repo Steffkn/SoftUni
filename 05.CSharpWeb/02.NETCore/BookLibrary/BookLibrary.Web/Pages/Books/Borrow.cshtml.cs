@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using BookLibrary.Data;
 using BookLibrary.Models;
+using BookLibrary.Web.Filter;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookLibrary.Web.Pages.Books
 {
+    [Authorize]
     public class BorrowModel : PageModel
     {
         public BorrowModel(BookLibraryDbContext context)
@@ -86,7 +89,7 @@ namespace BookLibrary.Web.Pages.Books
 
             return this.RedirectToPage("/Index");
         }
-
+        
         public IActionResult OnPost(int bookId)
         {
             if (!ModelState.IsValid)

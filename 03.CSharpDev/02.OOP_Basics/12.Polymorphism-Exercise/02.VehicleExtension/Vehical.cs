@@ -38,17 +38,14 @@ public class Vehical : IVehical
 
     public virtual string Drive(double km, bool isEmpty = false)
     {
-        if (this.MaxDistance >= km)
+        if (!isEmpty && this.FuelQuantity / (this.LitersPerKm + this.AirConditionersFuelConsumption) >= km)
         {
-            if (!isEmpty)
-            {
-                this.FuelQuantity -= (km * (this.LitersPerKm + this.AirConditionersFuelConsumption));
-            }
-            else
-            {
-                this.FuelQuantity -= (km * this.LitersPerKm);
-            }
-
+            this.FuelQuantity -= (km * (this.LitersPerKm + this.AirConditionersFuelConsumption));
+            return $"{this.GetType()} travelled {km} km";
+        }
+        else if (isEmpty && this.FuelQuantity / (this.LitersPerKm) >= km)
+        {
+            this.FuelQuantity -= (km * this.LitersPerKm);
             return $"{this.GetType()} travelled {km} km";
         }
 
